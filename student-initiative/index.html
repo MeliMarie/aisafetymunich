@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Student Initiative — Safe AI Munich</title>
+<meta name="description" content="The Munich AI Safety Student Initiative unites students, academics and experts to learn and work on the most pressing risks posed by advanced AI. Two branches: compute verification and AI governance.">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Munich AI Safety Student Initiative">
+<meta property="og:description" content="We unite students, academics and experts to learn and work on the most pressing risks posed by advanced artificial intelligence.">
+<meta property="og:url" content="https://safeaimunich.org/student-initiative/">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://safeaimunich.org/student-initiative/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%2315171C'/%3E%3Ccircle cx='9' cy='7' r='2.5' fill='%23F4EFE6'/%3E%3Crect x='6.5' y='10' width='5' height='8.5' rx='2.5' fill='%23F4EFE6'/%3E%3Ccircle cx='16' cy='8.6' r='2.1' fill='%23E3A83B'/%3E%3Crect x='13.9' y='11.2' width='4.2' height='7.3' rx='2.1' fill='%23E3A83B'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* ---- Design tokens: MAIS starter palette -------------------------- */
+  :root {
+    --ink:        #15171C;
+    --paper:      #F4EFE6;
+    --gold:       #E3A83B;
+    --isar:       #8FA7C9;
+
+    --ink-soft:   #22252C;   /* raised surfaces on dark */
+    --ink-line:   #32363F;   /* hairlines on dark */
+    --body:       #55585F;   /* body text on paper, 6.6:1 */
+    --body-dark:  #C9C6C0;   /* body text on ink, 9.5:1 */
+    --paper-line: #DED6C8;   /* hairlines on paper */
+    --paper-sunk: #EBE4D7;   /* sunken surfaces on paper */
+
+    --font-head: 'Bricolage Grotesque', 'Arial Black', system-ui, sans-serif;
+    --font-text: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+    --wrap: 1080px;
+    --radius: 14px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-text);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-head);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  p { margin: 0; text-wrap: pretty; }
+  img, svg { max-width: 100%; }
+
+  a { color: inherit; }
+  a:focus-visible,
+  button:focus-visible,
+  summary:focus-visible,
+  .skip:focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 28px; }
+
+  /* mono eyebrow / detail text ---------------------------------------- */
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: .74rem;
+    font-weight: 500;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    margin: 0 0 14px;
+  }
+  .eyebrow--gold { color: #A9761B; }           /* 4.9:1 on paper */
+  .eyebrow--on-ink { color: var(--gold); }     /* 8.6:1 on ink */
+
+  /* ---- Skip link ----------------------------------------------------- */
+  .skip {
+    position: absolute; left: -9999px; top: 0; z-index: 100;
+    background: var(--gold); color: var(--ink);
+    padding: 12px 20px; font-weight: 600; text-decoration: none;
+  }
+  .skip:focus { left: 8px; top: 8px; }
+
+  /* ================================================================== */
+  /*  Level 1 nav — same top-level nav as the main site                  */
+  /* ================================================================== */
+  .nav1 { background: var(--ink); color: var(--paper); font-size: .9rem; }
+  .nav1 .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 18px; min-height: 52px; flex-wrap: wrap;
+  }
+  .brand {
+    display: inline-flex; align-items: center; gap: 9px;
+    font-family: var(--font-head); font-weight: 700; font-size: 1rem;
+    letter-spacing: -0.01em; text-decoration: none; color: var(--paper);
+    padding: 7px 0;
+  }
+  .brand svg { flex-shrink: 0; }
+  .nav1-links { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+  .nav1-links a {
+    color: var(--body-dark); text-decoration: none; font-weight: 500;
+    padding: 7px 0; border-bottom: 2px solid transparent;
+  }
+  .nav1-links a:hover { color: var(--paper); }
+  .nav1-links a[aria-current="true"] { color: var(--paper); border-bottom-color: var(--gold); }
+
+  /* ================================================================== */
+  /*  Level 2 nav — specific to the Student Initiative (sticky)          */
+  /* ================================================================== */
+  .nav2 {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(244,239,230,.92);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--paper-line);
+  }
+  .nav2 .wrap {
+    display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    min-height: 60px;
+  }
+  .nav2-title {
+    font-family: var(--font-head); font-weight: 700; font-size: 1.02rem;
+    letter-spacing: -0.01em; text-decoration: none; white-space: nowrap;
+  }
+  .nav2-right { display: flex; align-items: center; gap: 24px; min-width: 0; }
+  .nav2-links {
+    display: flex; gap: 24px; overflow-x: auto; scrollbar-width: none;
+    -ms-overflow-style: none; padding: 4px 0;
+  }
+  .nav2-links::-webkit-scrollbar { display: none; }
+  .nav2-links a {
+    color: var(--body); text-decoration: none; font-size: .94rem; font-weight: 500;
+    white-space: nowrap; padding: 4px 0; border-bottom: 2px solid transparent;
+  }
+  .nav2-links a:hover { color: var(--ink); border-bottom-color: var(--gold); }
+
+  /* ---- Buttons ------------------------------------------------------- */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+    font-family: var(--font-text); font-weight: 600; font-size: 1rem;
+    text-decoration: none; padding: 13px 24px; border-radius: 10px;
+    border: 1px solid transparent; cursor: pointer; white-space: nowrap;
+    transition: transform .12s ease, background-color .12s ease;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn--gold { background: var(--gold); color: var(--ink); }
+  .btn--gold:hover { background: #D59A2B; }
+  .btn--ink { background: var(--ink); color: var(--paper); }
+  .btn--ink:hover { background: #24272F; }
+  .btn--ghost-ink { background: transparent; color: var(--ink); border-color: #BFB6A6; }
+  .btn--ghost-ink:hover { background: var(--paper-sunk); }
+  .btn--ghost-paper { background: transparent; color: var(--paper); border-color: #4A4F59; }
+  .btn--ghost-paper:hover { background: var(--ink-soft); }
+  .btn--sm { padding: 9px 17px; font-size: .9rem; border-radius: 8px; }
+
+  /* ---- Section rhythm ------------------------------------------------ */
+  section { scroll-margin-top: 72px; }
+  .band { padding: 84px 0; }
+  .band--ink { background: var(--ink); color: var(--body-dark); }
+  .band--ink h2, .band--ink h3 { color: var(--paper); }
+  .band--sunk { background: var(--paper-sunk); }
+  .section-head { max-width: 660px; margin-bottom: 44px; }
+  .section-head h2 { font-size: clamp(1.75rem, 3.6vw, 2.3rem); margin-bottom: 14px; }
+  .section-head p { color: var(--body); font-size: 1.08rem; }
+  .band--ink .section-head p { color: var(--body-dark); }
+
+  /* ================================================================== */
+  /*  Hero                                                               */
+  /* ================================================================== */
+  .hero {
+    position: relative; overflow: hidden;
+    background: var(--ink); color: var(--body-dark);
+    padding: 104px 0 96px;
+  }
+  .hero-graph {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    pointer-events: none; opacity: .5;
+  }
+  .hero .wrap { position: relative; z-index: 1; }
+  .hero-inner { max-width: 720px; }
+  .hero h1 {
+    font-size: clamp(2.3rem, 6vw, 4rem);
+    color: var(--paper); margin-bottom: 22px;
+  }
+  .hero h1 em { font-style: normal; color: var(--gold); }
+  .hero-sub { font-size: 1.16rem; max-width: 600px; margin-bottom: 34px; }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+  .hero-meta {
+    margin-top: 40px; padding-top: 22px; border-top: 1px solid var(--ink-line);
+    display: flex; gap: 10px 30px; flex-wrap: wrap;
+    font-family: var(--font-mono); font-size: .76rem; font-weight: 500;
+    letter-spacing: .13em; text-transform: uppercase; color: var(--isar);
+  }
+
+  /* ================================================================== */
+  /*  Cards & grids                                                      */
+  /* ================================================================== */
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+
+  .card {
+    background: #FFFFFF; border: 1px solid var(--paper-line);
+    border-radius: var(--radius); padding: 30px;
+  }
+  .card h3 { font-size: 1.2rem; margin-bottom: 10px; }
+  .card p { color: var(--body); font-size: .99rem; }
+
+  /* numbered "what we do" rows */
+  .rows { display: grid; gap: 28px; }
+  .row { display: flex; gap: 20px; align-items: flex-start; }
+  .row-num {
+    flex-shrink: 0; width: 38px; height: 38px; border-radius: 9px;
+    background: var(--paper-sunk); color: var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-mono); font-size: .82rem; font-weight: 500;
+  }
+  .band--ink .row-num { background: var(--ink-soft); color: var(--gold); }
+  .row h3 { font-size: 1.1rem; margin-bottom: 5px; }
+  .row p { color: var(--body); font-size: .99rem; }
+  .band--ink .row p { color: var(--body-dark); }
+
+  /* ================================================================== */
+  /*  Branches — side-by-side blocks, brief description, expandable      */
+  /* ================================================================== */
+  .branch {
+    display: flex; flex-direction: column;
+    background: #FFFFFF; border: 1px solid var(--paper-line);
+    border-radius: var(--radius); overflow: hidden;
+  }
+  /* grows so that the "Read more" bar and footer line up across cards */
+  .branch-top { flex: 1 1 auto; padding: 30px 30px 26px; }
+  .branch-tag {
+    display: inline-block; font-family: var(--font-mono); font-size: .68rem;
+    font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
+    padding: 5px 10px; border-radius: 5px; margin-bottom: 16px;
+  }
+  .branch-tag--gold { background: #F7E4BE; color: #6E4A08; }
+  .branch-tag--isar { background: #DFE6F1; color: #2F4466; }
+  .branch h3 { font-size: 1.4rem; margin-bottom: 12px; }
+  .branch-lede { color: var(--ink); font-size: 1.04rem; font-weight: 500; margin-bottom: 12px; }
+  .branch-brief { color: var(--body); font-size: .99rem; }
+  .branch-facts {
+    list-style: none; margin: 20px 0 0; padding: 0;
+    display: grid; gap: 9px;
+  }
+  .branch-facts li {
+    display: flex; gap: 10px; color: var(--body); font-size: .94rem;
+  }
+  .branch-facts li::before {
+    content: ""; flex-shrink: 0; width: 6px; height: 6px; margin-top: .55em;
+    border-radius: 50%; background: var(--gold);
+  }
+  .branch details { border-top: 1px solid var(--paper-line); }
+  .branch summary {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 16px 30px; cursor: pointer; list-style: none;
+    font-weight: 600; font-size: .95rem; color: var(--ink);
+  }
+  .branch summary::-webkit-details-marker { display: none; }
+  .branch summary:hover { background: var(--paper-sunk); }
+  .branch summary .chev { transition: transform .18s ease; flex-shrink: 0; }
+  .branch details[open] summary .chev { transform: rotate(180deg); }
+  .branch-more { padding: 0 30px 26px; display: grid; gap: 14px; }
+  .branch-more p { color: var(--body); font-size: .97rem; }
+  .branch-foot {
+    padding: 20px 30px; background: var(--paper-sunk);
+    border-top: 1px solid var(--paper-line);
+    display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+  }
+  .source-note {
+    font-family: var(--font-mono); font-size: .72rem; letter-spacing: .06em;
+    color: var(--body);
+  }
+  .source-note a { color: #2F4466; }
+
+  /* ================================================================== */
+  /*  Events / Luma                                                      */
+  /* ================================================================== */
+  .cal-frame {
+    border: 1px solid var(--ink-line); border-radius: var(--radius);
+    overflow: hidden; background: var(--ink-soft); min-height: 460px;
+  }
+  .cal-frame iframe { display: block; width: 100%; height: 620px; border: 0; }
+  .cal-empty {
+    display: flex; flex-direction: column; align-items: flex-start; gap: 16px;
+    padding: 48px 34px; min-height: 460px; justify-content: center;
+  }
+  .cal-empty h3 { font-size: 1.25rem; }
+  .cal-empty p { color: var(--body-dark); max-width: 460px; }
+
+  /* ================================================================== */
+  /*  Reading list                                                       */
+  /* ================================================================== */
+  .readlist { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+  .readlist > li {
+    background: #FFFFFF; border: 1px solid var(--paper-line);
+    border-radius: 12px; padding: 22px 24px;
+    display: flex; gap: 18px; align-items: flex-start; flex-wrap: wrap;
+  }
+  .read-kind {
+    flex-shrink: 0; font-family: var(--font-mono); font-size: .68rem; font-weight: 500;
+    letter-spacing: .12em; text-transform: uppercase; color: #6E4A08;
+    background: #F7E4BE; padding: 5px 9px; border-radius: 5px; margin-top: 2px;
+  }
+  .read-body { flex: 1 1 320px; min-width: 0; }
+  .read-body h3 { font-family: var(--font-text); font-weight: 600; font-size: 1.02rem; letter-spacing: 0; line-height: 1.45; margin-bottom: 4px; }
+  .read-body h3 a { text-decoration: none; border-bottom: 1px solid var(--gold); }
+  .read-body h3 a:hover { color: #6E4A08; }
+  .read-body p { color: var(--body); font-size: .93rem; }
+  .readlist-note {
+    margin-top: 20px; font-size: .95rem; color: var(--body);
+  }
+
+  /* ================================================================== */
+  /*  Contact                                                            */
+  /* ================================================================== */
+  .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+  .lead-card {
+    background: var(--ink-soft); border: 1px solid var(--ink-line);
+    border-radius: var(--radius); padding: 28px;
+  }
+  .lead-card .role {
+    font-family: var(--font-mono); font-size: .7rem; font-weight: 500;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .lead-card h3 { font-size: 1.15rem; margin-bottom: 8px; }
+  .lead-card p { color: var(--body-dark); font-size: .95rem; }
+
+  .social-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+
+  /* ================================================================== */
+  /*  Footer (sub-page)                                                  */
+  /* ================================================================== */
+  footer { background: var(--ink); color: var(--body-dark); padding: 56px 0 30px; }
+  .foot-top {
+    display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap;
+    padding-bottom: 32px; border-bottom: 1px solid var(--ink-line);
+  }
+  .foot-about { max-width: 330px; }
+  .foot-about p { font-size: .93rem; margin-top: 12px; }
+  .foot-cols { display: flex; gap: 56px; flex-wrap: wrap; }
+  .foot-col h4 {
+    font-family: var(--font-mono); font-weight: 500; font-size: .72rem;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--isar);
+    margin-bottom: 14px;
+  }
+  .foot-col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; }
+  .foot-col a { color: var(--body-dark); text-decoration: none; font-size: .93rem; }
+  .foot-col a:hover { color: var(--paper); text-decoration: underline; }
+  .foot-bottom {
+    padding-top: 22px; display: flex; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap; font-size: .86rem; color: #8A8E96;
+  }
+
+  /* ---- Responsive ---------------------------------------------------- */
+  @media (max-width: 860px) {
+    .band { padding: 64px 0; }
+    .hero { padding: 76px 0 68px; }
+    .nav1-links { gap: 16px; font-size: .86rem; }
+    .nav2 .wrap { min-height: 56px; }
+    .nav2-right { gap: 14px; }
+    /* the link row scrolls at this size — fade the right edge to show it */
+    .nav2-links {
+      -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 26px), transparent);
+      mask-image: linear-gradient(to right, #000 calc(100% - 26px), transparent);
+    }
+  }
+  @media (max-width: 680px) {
+    body { font-size: 16px; }
+    .wrap { padding: 0 20px; }
+    /* keep the decorative graph from sitting behind the hero copy */
+    .hero-graph { display: none; }
+    .nav1 .wrap { min-height: 48px; padding-top: 6px; padding-bottom: 6px; }
+    .nav2-links { gap: 18px; }
+    .hero-actions .btn { width: 100%; }
+    .card, .branch-top, .branch-more, .branch-foot, .lead-card { padding-left: 22px; padding-right: 22px; }
+    .branch summary { padding-left: 22px; padding-right: 22px; }
+  }
+  /* The level-2 nav links scroll horizontally on narrow screens; hide the
+     wordmark there so the links and the Join button keep enough room. */
+  @media (max-width: 560px) {
+    .nav2-title { display: none; }
+  }
+</style>
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- =====================================================================
+     LEVEL 1 NAV — top-level nav, same as on the Safe AI Munich landing page
+     ================================================================== -->
+<div class="nav1">
+  <nav class="wrap" aria-label="Safe AI Munich">
+    <a class="brand" href="/">
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <circle cx="9" cy="6.4" r="2.6" fill="#F4EFE6"/>
+        <rect x="6.4" y="9.6" width="5.2" height="9.2" rx="2.6" fill="#F4EFE6"/>
+        <circle cx="16.4" cy="8.2" r="2.2" fill="#E3A83B"/>
+        <rect x="14.2" y="10.9" width="4.4" height="7.9" rx="2.2" fill="#E3A83B"/>
+      </svg>
+      Safe AI Munich
+    </a>
+    <div class="nav1-links">
+      <a href="/#what-we-do">What we do</a>
+      <a href="/#why-ai-safety">Why AI safety</a>
+      <a href="/student-initiative/" aria-current="true">Students</a>
+      <a href="/resources">Resources</a>
+      <a href="https://chat.whatsapp.com/BAvF88QyfrDKZMKo7whRX7?s=cl&amp;p=i&amp;ilr=4">Join us</a>
+    </div>
+  </nav>
+</div>
+
+<!-- =====================================================================
+     LEVEL 2 NAV — specific to the Student Initiative
+     ================================================================== -->
+<div class="nav2">
+  <nav class="wrap" aria-label="Student Initiative">
+    <a class="nav2-title" href="/student-initiative/">Student Initiative</a>
+    <div class="nav2-right">
+      <div class="nav2-links">
+        <a href="#about">About</a>
+        <a href="#branches">Branches</a>
+        <a href="#events">Events</a>
+        <a href="#reading">Reading list</a>
+        <a href="#get-involved">Get involved</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a class="btn btn--gold btn--sm" href="https://chat.whatsapp.com/BAvF88QyfrDKZMKo7whRX7?s=cl&amp;p=i&amp;ilr=4">Join</a>
+    </div>
+  </nav>
+</div>
+
+<main id="main">
+
+  <!-- ===================================================================
+       HERO
+       Headline is Diego's first draft option. Alternative on file:
+       "Let's make AI go well"
+       ================================================================ -->
+  <header class="hero">
+    <svg class="hero-graph" viewBox="0 0 1200 520" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+      <g stroke="#32363F" stroke-width="1.4" fill="none">
+        <path d="M905 108 L1012 176 M1012 176 L962 292 M962 292 L848 268 M848 268 L905 108 M848 268 L1012 176 M1095 92 L1012 176 M962 292 L1088 352 M760 170 L848 268 M760 170 L905 108"/>
+      </g>
+      <g fill="#8FA7C9" opacity=".55">
+        <circle cx="905" cy="108" r="9"/>
+        <circle cx="962" cy="292" r="7"/>
+        <circle cx="760" cy="170" r="5.5"/>
+      </g>
+      <g fill="#F4EFE6" opacity=".3">
+        <circle cx="1012" cy="176" r="10"/>
+        <circle cx="848" cy="268" r="7"/>
+        <circle cx="1088" cy="352" r="5"/>
+      </g>
+      <circle cx="1095" cy="92" r="6.5" fill="#E3A83B" opacity=".75"/>
+      <g fill="none" stroke="#E3A83B" stroke-width="1.4" opacity=".5">
+        <circle cx="1140" cy="248" r="5"/>
+      </g>
+    </svg>
+
+    <div class="wrap">
+      <div class="hero-inner">
+        <p class="eyebrow eyebrow--on-ink">Munich AI Safety Student Initiative</p>
+        <h1>Advanced AI is arriving fast. <em>The tools to govern it are not.</em></h1>
+        <p class="hero-sub">We unite students, academics and experts to learn and work on the most pressing risks posed by advanced artificial intelligence.</p>
+        <div class="hero-actions">
+          <a class="btn btn--gold" href="https://chat.whatsapp.com/BAvF88QyfrDKZMKo7whRX7?s=cl&amp;p=i&amp;ilr=4">
+            Join our WhatsApp group
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M5 12h13M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn btn--ghost-paper" href="#branches">See what we work on</a>
+        </div>
+        <p class="hero-meta">
+          <span>Two branches</span>
+          <span>Reading groups every 2 weeks</span>
+          <span>Open to all Munich students</span>
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================================================================
+       WHO WE ARE AND WHAT WE DO
+       ================================================================ -->
+  <section class="band" id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow eyebrow--gold">Who we are</p>
+        <h2>A student initiative working on the risks that come with advanced AI</h2>
+        <p>We are students, academics and experts across Munich's universities who think the hardest problems in AI safety are worth working on now, not later. You do not need a background in AI safety to join. You need curiosity and a willingness to read.</p>
+      </div>
+
+      <div class="rows">
+        <div class="row">
+          <div class="row-num">01</div>
+          <div>
+            <h3>We learn together</h3>
+            <p>Structured introductions and regular reading groups, with topics curated by the club leads and members. Everyone starts somewhere, and the reading groups are built so you can join without prior knowledge.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-num">02</div>
+          <div>
+            <h3>We work on real projects</h3>
+            <p>Each branch runs its own project, from research on compute verification mechanisms to building a database of reported AI safety incidents. The aim is to identify where further work is needed and then contribute to it ourselves.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-num">03</div>
+          <div>
+            <h3>We connect Munich to the wider field</h3>
+            <p>Workshops with AI safety organisations and startups, talks, and introductions to people already working in the field. We are part of the broader Safe AI Munich community, so students and professionals meet.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       BRANCHES
+       Layout: side-by-side blocks, brief description, expandable
+       (option 1 of the three layouts in the spec).
+       Full long-form copy sits inside the expandable block, which answers
+       the "too much text?" note on the compute verification draft.
+       ================================================================ -->
+  <section class="band band--sunk" id="branches">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow eyebrow--gold">What we work on</p>
+        <h2>Two branches</h2>
+        <p>Pick the one that fits your interests, or follow both. Each branch has its own lead, its own reading group and its own project.</p>
+      </div>
+
+      <div class="grid-2">
+
+        <!-- ---------- Branch: Compute Verification ---------- -->
+        <article class="branch">
+          <div class="branch-top">
+            <span class="branch-tag branch-tag--gold">Branch 01</span>
+            <h3>Compute Verification</h3>
+            <p class="branch-lede">Industry leaders and experts are calling on governments to slow down the development of frontier AI, but the technology needed to do so doesn't exist. We are here to build it.</p>
+            <p class="branch-brief">For any international agreement on AI to work, countries need to be able to check that others are keeping to it. Verification mechanisms that account for and evaluate the use of AI compute in a privacy-preserving manner can make such an agreement possible.</p>
+            <ul class="branch-facts">
+              <li>Structured introduction to compute verification</li>
+              <li>Regular reading group</li>
+              <li>Research projects on open problems</li>
+            </ul>
+          </div>
+
+          <details>
+            <summary>
+              Read more about this branch
+              <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </summary>
+            <div class="branch-more">
+              <p>Through a structured introduction to compute verification and a regular reading group, we will learn about these mechanisms and identify where further work is needed, so that we can conduct research projects and contribute to it ourselves.</p>
+              <p>Compute is one of the few inputs to frontier AI that is physical, concentrated and countable, which is what makes it a promising lever for international agreements. The open questions are technical as much as political: how do you prove what a cluster was used for without exposing the model or the data?</p>
+              <p class="source-note">Source: <a href="https://www.pacingthefrontier.com/" rel="noopener">pacingthefrontier.com</a></p>
+            </div>
+          </details>
+
+          <div class="branch-foot">
+            <!-- TODO: replace with the branch-specific outreach link
+                 ("Branches: use outreach links for each" in the spec) -->
+            <a class="btn btn--ink btn--sm" href="https://chat.whatsapp.com/BAvF88QyfrDKZMKo7whRX7?s=cl&amp;p=i&amp;ilr=4">Join this branch</a>
+            <a class="btn btn--ghost-ink btn--sm" href="#reading">Reading list</a>
+          </div>
+        </article>
+
+        <!-- ---------- Branch: AI Governance ---------- -->
+        <article class="branch">
+          <div class="branch-top">
+            <span class="branch-tag branch-tag--isar">Branch 02</span>
+            <h3>AI Governance</h3>
+            <p class="branch-lede">Our current focus is on raising awareness and gathering interest around how AI development is actually regulated.</p>
+            <p class="branch-brief">We aim to create transparency when it comes to regulatory guidelines for AI development, as well as the inconsistencies we mark as dangerous in AI reporting.</p>
+            <ul class="branch-facts">
+              <li>Reading groups every two weeks through the Winter Semester</li>
+              <li>Two workshops with AI safety organisations and startups</li>
+              <li>Internal project: an AI safety incident reporting database</li>
+            </ul>
+          </div>
+
+          <details>
+            <summary>
+              Read more about this branch
+              <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </summary>
+            <div class="branch-more">
+              <p>We currently plan to hold reading groups during the Winter Semester every two weeks starting in October, where relevant topics are curated by club leads and members. We have also planned two workshops with AI safety organisations and startups.</p>
+              <p>Our team's internal project will be to build a reporting database, where we will compare different third-party research publications on AI safety incidents, aiming to gather complete data on the matter.</p>
+            </div>
+          </details>
+
+          <div class="branch-foot">
+            <!-- TODO: replace with the branch-specific outreach link -->
+            <a class="btn btn--ink btn--sm" href="https://chat.whatsapp.com/BAvF88QyfrDKZMKo7whRX7?s=cl&amp;p=i&amp;ilr=4">Join this branch</a>
+            <a class="btn btn--ghost-ink btn--sm" href="#contact">Talk to the lead</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       EVENTS — Luma calendar embed
+       ================================================================ -->
+  <section class="band band--ink" id="events">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow eyebrow--on-ink">Events</p>
+        <h2>Reading groups, workshops and socials</h2>
+        <p>Everything we run is listed on our Luma calendar. Subscribe there to get new events automatically, or join the WhatsApp group to hear about them first.</p>
+      </div>
+
+      <!-- =================================================================
+           LUMA SETUP (one-line change):
+           Put the calendar ID into LUMA_CALENDAR_ID in the script below.
+           From your Luma calendar page the URL looks like
+             https://lu.ma/safeaimunich   ->  ID is "safeaimunich"
+           Until it is set, the fallback card below is shown instead.
+           ============================================================== -->
+      <div class="cal-frame" id="luma-frame">
+        <div class="cal-empty" id="luma-fallback">
+          <p class="eyebrow eyebrow--on-ink" style="margin-bottom:0">Calendar coming soon</p>
+          <h3>The calendar is being set up</h3>
+          <p>Our Luma calendar goes live together with the Winter Semester programme. In the meantime, the WhatsApp group is where every session gets announced.</p>
+          <a class="btn btn--gold" href="https://chat.whatsapp.com/BAvF88QyfrDKZMKo7whRX7?s=cl&amp;p=i&amp;ilr=4">Get event announcements</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       READING LIST
+       Compute-verification specific, per the meeting notes. Built as a
+       list so documents can be appended as the branches produce them.
+       ================================================================ -->
+  <section class="band" id="reading">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow eyebrow--gold">Reading list</p>
+        <h2>Start here: compute verification</h2>
+        <p>The reading group works through these in order. You do not need to have read anything in advance to turn up to a session.</p>
+      </div>
+
+      <ol class="readlist">
+        <!-- Source given in the spec document -->
+        <li>
+          <span class="read-kind">Start here</span>
+          <div class="read-body">
+            <h3><a href="https://www.pacingthefrontier.com/" rel="noopener">Pacing the Frontier</a></h3>
+            <p>The clearest overview of why verification is the missing piece for any international agreement on frontier AI. Our structured introduction follows its framing.</p>
+          </div>
+        </li>
+
+        <!-- TODO (branch leads): these two are suggestions to confirm or swap
+             before launch; the spec only specified Pacing the Frontier. -->
+        <li>
+          <span class="read-kind">Paper</span>
+          <div class="read-body">
+            <h3><a href="https://arxiv.org/abs/2303.11341" rel="noopener">What Does It Take to Catch a Chinchilla?</a></h3>
+            <p>Yonadav Shavit's proposal for verifying rules on large-scale neural network training via compute monitoring. The reference point for most later work on the topic.</p>
+          </div>
+        </li>
+        <li>
+          <span class="read-kind">Paper</span>
+          <div class="read-body">
+            <h3><a href="https://arxiv.org/abs/2402.08797" rel="noopener">Computing Power and the Governance of Artificial Intelligence</a></h3>
+            <p>Why compute is a uniquely governable input to AI development, and what that implies for policy. Useful shared context for both branches.</p>
+          </div>
+        </li>
+
+        <!-- ================================================================
+             TO ADD A READING, COPY THIS BLOCK:
+
+             <li>
+               <span class="read-kind">Paper</span>
+               <div class="read-body">
+                 <h3><a href="URL" rel="noopener">Title</a></h3>
+                 <p>One or two sentences on why it is on the list.</p>
+               </div>
+             </li>
+
+             Suggested values for read-kind: Start here, Paper, Report,
+             Course, Talk, Internal doc.
+             ============================================================= -->
+      </ol>
+
+      <p class="readlist-note">The governance branch curates its own list each semester with the club leads and members. Ask in the WhatsApp group for the current cycle.</p>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       GET INVOLVED
+       ================================================================ -->
+  <section class="band band--sunk" id="get-involved">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow eyebrow--gold">Get involved</p>
+        <h2>Ways in</h2>
+        <p>Whether you want to read along quietly or run a project, there is a way in.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>Join a reading group</h3>
+          <p>The lowest-effort way to start. Pick a branch, show up, read along. No prior background needed.</p>
+        </div>
+        <div class="card">
+          <h3>Work on a project</h3>
+          <p>Contribute to the compute verification research or the incident reporting database. Good for a thesis, a side project, or a semester of serious work.</p>
+        </div>
+        <div class="card">
+          <h3>Bring something of your own</h3>
+          <p>Give a talk, propose a reading, run a workshop, or help organise. Tell us what you want to do and we will help make it happen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       CONTACT + SOCIALS
+       ================================================================ -->
+  <section class="band band--ink" id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow eyebrow--on-ink">Contact</p>
+        <h2>Talk to us</h2>
+        <p>The WhatsApp group is the fastest way to reach anyone in the initiative. For anything that needs a longer reply, email works too.</p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- TODO (open question in the spec: "Contact details: is it fine to
+             put them? Create new email addresses? Pictures?")
+             Personal email addresses and phone numbers for the two leads are
+             in the planning doc. They are deliberately NOT published here.
+             Decide on role-based addresses (e.g. compute@safeaimunich.org,
+             governance@safeaimunich.org) and add them below. -->
+        <div class="lead-card">
+          <p class="role">Compute Verification Lead</p>
+          <h3>Diego Müller</h3>
+          <p>Questions about the compute verification branch, its reading group or research projects.</p>
+          <div class="social-row">
+            <a class="btn btn--ghost-paper btn--sm" href="mailto:hello@safeaimunich.org?subject=Compute%20Verification">Email the team</a>
+          </div>
+        </div>
+
+        <div class="lead-card">
+          <p class="role">Governance Lead</p>
+          <h3>Begüm Balat</h3>
+          <p>Questions about the governance branch, the workshops or the reporting database.</p>
+          <div class="social-row">
+            <a class="btn btn--ghost-paper btn--sm" href="mailto:hello@safeaimunich.org?subject=AI%20Governance">Email the team</a>
+          </div>
+        </div>
+
+        <div class="lead-card">
+          <p class="role">Everything else</p>
+          <h3>Find us online</h3>
+          <p>Day-to-day conversation happens on WhatsApp. We post updates and events on LinkedIn.</p>
+          <div class="social-row">
+            <a class="btn btn--gold btn--sm" href="https://chat.whatsapp.com/BAvF88QyfrDKZMKo7whRX7?s=cl&amp;p=i&amp;ilr=4">WhatsApp</a>
+            <!-- TODO: add the LinkedIn page URL once it exists -->
+            <a class="btn btn--ghost-paper btn--sm" href="mailto:hello@safeaimunich.org">hello@safeaimunich.org</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- =====================================================================
+     FOOTER (sub-page): contact and socials, link back to the main site
+     ================================================================== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-about">
+        <a class="brand" href="/">
+          <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="9" cy="6.4" r="2.6" fill="#F4EFE6"/>
+            <rect x="6.4" y="9.6" width="5.2" height="9.2" rx="2.6" fill="#F4EFE6"/>
+            <circle cx="16.4" cy="8.2" r="2.2" fill="#E3A83B"/>
+            <rect x="14.2" y="10.9" width="4.4" height="7.9" rx="2.2" fill="#E3A83B"/>
+          </svg>
+          Safe AI Munich
+        </a>
+        <p>The Student Initiative is part of Safe AI Munich, a community for everyone in Munich working on safe and beneficial AI.</p>
+      </div>
+
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h4>Student Initiative</h4>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#branches">Branches</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#reading">Reading list</a></li>
+            <li><a href="#get-involved">Get involved</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4>Safe AI Munich</h4>
+          <ul>
+            <li><a href="/">Main site</a></li>
+            <li><a href="/#what-we-do">What we do</a></li>
+            <li><a href="/#why-ai-safety">Why AI safety</a></li>
+            <li><a href="/resources">Resources</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:hello@safeaimunich.org">hello@safeaimunich.org</a></li>
+            <li><a href="https://chat.whatsapp.com/BAvF88QyfrDKZMKo7whRX7?s=cl&amp;p=i&amp;ilr=4">WhatsApp group</a></li>
+            <!-- TODO: <li><a href="LINKEDIN_URL">LinkedIn</a></li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <div>© 2026 Munich AI Safety</div>
+      <!-- TODO (required before launch, open task in the planning doc):
+           Impressum and Privacy policy pages. Add them here once they exist:
+           <div><a href="/impressum">Impressum</a> · <a href="/privacy">Privacy policy</a></div> -->
+      <div>Munich AI Safety Student Initiative</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ------------------------------------------------------------------
+     Luma calendar embed.
+     Set LUMA_CALENDAR_ID to your calendar's handle to switch the
+     fallback card out for the live calendar. Nothing else to change.
+     ------------------------------------------------------------------ */
+  var LUMA_CALENDAR_ID = ""; // e.g. "safeaimunich"
+
+  (function () {
+    if (!LUMA_CALENDAR_ID) return;
+
+    var frame = document.getElementById("luma-frame");
+    var fallback = document.getElementById("luma-fallback");
+    if (!frame) return;
+
+    var iframe = document.createElement("iframe");
+    iframe.src = "https://lu.ma/embed/calendar/" + encodeURIComponent(LUMA_CALENDAR_ID) + "/events";
+    iframe.title = "Safe AI Munich Student Initiative events calendar";
+    iframe.loading = "lazy";
+    iframe.allow = "fullscreen";
+    iframe.setAttribute("allowfullscreen", "");
+
+    if (fallback) fallback.remove();
+    frame.appendChild(iframe);
+  })();
+</script>
+
+</body>
+</html>
