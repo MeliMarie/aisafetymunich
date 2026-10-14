@@ -132,11 +132,8 @@
         <h2 id="events-title" class="h2">Come to an event</h2>
         <p class="body">Most events are open to everyone, some are for students only.</p>
       </div>
-      <div class="embed" data-luma-embed>
-        <div class="embed__placeholder">
-          <p class="small">The calendar loads from Luma, which may set cookies. Show it here, or open it on Luma.</p>
-          <button class="btn btn-secondary" type="button" id="show-events">Show events</button>
-        </div>
+      <div class="embed">
+        <iframe src="https://luma.com/embed/calendar/cal-iQKye42k20Y8pAv/events?lt=light" title="MAIS events on Luma" loading="lazy" allowfullscreen></iframe>
       </div>
       <p class="embed-link"><a class="text-link" href="https://luma.com/cal-iQKye42k20Y8pAv" target="_blank" rel="noopener" data-goatcounter-click="luma-calendar">See the full calendar on Luma <span aria-hidden="true">↗</span><span class="visually-hidden"> (opens in a new tab)</span></a></p>
     </div>
@@ -203,27 +200,6 @@
 </footer>
 
 <script src="assets/js/cable-net.js" defer></script>
-<script>
-  // Luma calendar: loads only after a click, so nothing reaches Luma until the visitor asks.
-  // Paste the embed URL from Luma (Calendar, Embed) between the quotes.
-  (function () {
-    var LUMA_EMBED_URL = 'https://luma.com/embed/calendar/cal-iQKye42k20Y8pAv/events';
-    var button = document.getElementById('show-events');
-    if (!button) return;
-    button.addEventListener('click', function () {
-      if (!LUMA_EMBED_URL) {
-        button.textContent = 'Calendar not connected yet';
-        button.disabled = true;
-        return;
-      }
-      var frame = document.createElement('iframe');
-      frame.src = LUMA_EMBED_URL;
-      frame.title = 'MAIS events on Luma';
-      frame.loading = 'lazy';
-      document.querySelector('[data-luma-embed]').replaceChildren(frame);
-    });
-  })();
-</script>
 <script src="assets/js/mais-net.js" defer></script>
 </body>
 </html>
