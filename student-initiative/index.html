@@ -350,6 +350,64 @@
   .social-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
 
   /* ================================================================== */
+  /*  Registration form                                                  */
+  /* ================================================================== */
+  .reg-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 48px; align-items: start; }
+  .reg-layout .section-head { margin-bottom: 0; }
+  .reg-form {
+    background: #FFFFFF; border: 1px solid var(--paper-line);
+    border-radius: var(--radius); padding: 34px;
+    display: grid; gap: 22px;
+  }
+  .field { display: grid; gap: 7px; }
+  .field label, .field legend {
+    font-weight: 600; font-size: .96rem; color: var(--ink); padding: 0;
+  }
+  .field .opt { font-weight: 400; color: var(--body); }
+  .field .hint { font-size: .86rem; color: var(--body); }
+  .field input[type="text"],
+  .field input[type="email"],
+  .field input[type="tel"],
+  .field textarea {
+    width: 100%; font: inherit; font-size: 1rem; color: var(--ink);
+    background: #FFFFFF; border: 1px solid #BFB6A6; border-radius: 9px;
+    padding: 11px 14px;
+  }
+  .field textarea { min-height: 128px; resize: vertical; }
+  .field input:focus-visible, .field textarea:focus-visible,
+  .check input:focus-visible {
+    outline: 3px solid var(--gold); outline-offset: 1px; border-color: var(--ink);
+  }
+  .field [aria-invalid="true"] { border-color: #B3261E; }
+  fieldset.field { border: 0; margin: 0; padding: 0; min-width: 0; }
+  .checks { display: grid; gap: 10px; margin-top: 4px; }
+  .check {
+    display: flex; gap: 12px; align-items: flex-start;
+    padding: 12px 14px; border: 1px solid var(--paper-line); border-radius: 9px;
+    cursor: pointer; font-weight: 500; font-size: .97rem;
+  }
+  .check:hover { background: var(--paper-sunk); }
+  .check input { width: 18px; height: 18px; margin: 3px 0 0; accent-color: var(--ink); flex-shrink: 0; }
+  .check small { display: block; color: var(--body); font-weight: 400; font-size: .86rem; }
+  .check--plain { border: 0; padding: 0; font-weight: 400; color: var(--body); font-size: .92rem; }
+  .check--plain:hover { background: transparent; }
+  .field-error { color: #B3261E; font-size: .88rem; font-weight: 500; }
+  .field-error:empty { display: none; }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .reg-status { font-size: .97rem; border-radius: 9px; padding: 14px 16px; }
+  .reg-status:empty { display: none; }
+  .reg-status--ok { background: #E3F0E6; color: #1E5631; }
+  .reg-status--err { background: #F9E1DF; color: #8C1D16; }
+  .reg-form button[disabled] { opacity: .6; cursor: progress; transform: none; }
+  @media (max-width: 860px) {
+    .reg-layout { grid-template-columns: 1fr; gap: 32px; }
+  }
+  @media (max-width: 680px) {
+    .reg-form { padding: 24px 20px; }
+    .reg-form .btn { width: 100%; }
+  }
+
+  /* ================================================================== */
   /*  Footer (sub-page)                                                  */
   /* ================================================================== */
   footer { background: var(--ink); color: var(--body-dark); padding: 56px 0 30px; }
@@ -445,9 +503,10 @@
         <a href="#events">Events</a>
         <a href="#reading">Reading list</a>
         <a href="#get-involved">Get involved</a>
+        <a href="#register">Register</a>
         <a href="#contact">Contact</a>
       </div>
-      <a class="btn btn--gold btn--sm" href="https://chat.whatsapp.com/BAvF88QyfrDKZMKo7whRX7?s=cl&amp;p=i&amp;ilr=4">Join</a>
+      <a class="btn btn--gold btn--sm" href="#register">Register</a>
     </div>
   </nav>
 </div>
@@ -486,8 +545,8 @@
         <h1>Advanced AI is arriving fast. <em>The tools to govern it are not.</em></h1>
         <p class="hero-sub">We unite students, academics and experts to learn and work on the most pressing risks posed by advanced artificial intelligence.</p>
         <div class="hero-actions">
-          <a class="btn btn--gold" href="https://chat.whatsapp.com/BAvF88QyfrDKZMKo7whRX7?s=cl&amp;p=i&amp;ilr=4">
-            Join our WhatsApp group
+          <a class="btn btn--gold" href="#register">
+            Register for the club
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M5 12h13M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
           <a class="btn btn--ghost-paper" href="#branches">See what we work on</a>
@@ -582,9 +641,8 @@
           </details>
 
           <div class="branch-foot">
-            <!-- TODO: replace with the branch-specific outreach link
-                 ("Branches: use outreach links for each" in the spec) -->
-            <a class="btn btn--ink btn--sm" href="https://chat.whatsapp.com/BAvF88QyfrDKZMKo7whRX7?s=cl&amp;p=i&amp;ilr=4">Join this branch</a>
+            <!-- Jumps to the registration form with this branch pre-ticked -->
+            <a class="btn btn--ink btn--sm" href="#register" data-branch="Compute verification">Join this branch</a>
             <a class="btn btn--ghost-ink btn--sm" href="#reading">Reading list</a>
           </div>
         </article>
@@ -615,8 +673,8 @@
           </details>
 
           <div class="branch-foot">
-            <!-- TODO: replace with the branch-specific outreach link -->
-            <a class="btn btn--ink btn--sm" href="https://chat.whatsapp.com/BAvF88QyfrDKZMKo7whRX7?s=cl&amp;p=i&amp;ilr=4">Join this branch</a>
+            <!-- Jumps to the registration form with this branch pre-ticked -->
+            <a class="btn btn--ink btn--sm" href="#register" data-branch="AI governance">Join this branch</a>
             <a class="btn btn--ghost-ink btn--sm" href="#contact">Talk to the lead</a>
           </div>
         </article>
@@ -743,6 +801,103 @@
   </section>
 
   <!-- ===================================================================
+       REGISTRATION FORM
+       Replaces the old "Join our WhatsApp group" calls to action.
+       Backend: see REGISTRATION SETUP in the script at the bottom of
+       this file. The form posts to a hosted form service (Web3Forms by
+       default), so no server of our own is needed.
+       ================================================================ -->
+  <section class="band" id="register">
+    <div class="wrap">
+      <div class="reg-layout">
+        <div class="section-head">
+          <p class="eyebrow eyebrow--gold">Register</p>
+          <h2>Join the Student Initiative</h2>
+          <p>Tell us a bit about yourself and which branches you would like to follow. We will add you to the right reading groups and get in touch before the next session.</p>
+        </div>
+
+        <form class="reg-form" id="reg-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+          <!-- Service config (filled in by the script below) -->
+          <input type="hidden" name="access_key" value="">
+          <input type="hidden" name="subject" value="New Student Initiative registration">
+          <input type="hidden" name="from_name" value="Safe AI Munich website">
+          <!-- Spam honeypot: real users never see or tick this -->
+          <div class="hp" aria-hidden="true">
+            <label>Leave this empty <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></label>
+          </div>
+
+          <div class="field">
+            <label for="reg-name">Name</label>
+            <input type="text" id="reg-name" name="name" autocomplete="name" required aria-describedby="reg-name-err">
+            <p class="field-error" id="reg-name-err" aria-live="polite"></p>
+          </div>
+
+          <div class="field">
+            <label for="reg-email">University email</label>
+            <input type="email" id="reg-email" name="email" autocomplete="email" inputmode="email" required
+                   placeholder="name@tum.de" aria-describedby="reg-email-hint reg-email-err">
+            <p class="hint" id="reg-email-hint">Your TUM, LMU, HM or other university address.</p>
+            <p class="field-error" id="reg-email-err" aria-live="polite"></p>
+          </div>
+
+          <div class="field">
+            <label for="reg-phone">Phone <span class="opt">(optional)</span></label>
+            <input type="tel" id="reg-phone" name="phone" autocomplete="tel" inputmode="tel" placeholder="+49 …"
+                   aria-describedby="reg-phone-hint">
+            <p class="hint" id="reg-phone-hint">Only used to add you to the club's group chat.</p>
+          </div>
+
+          <div class="field">
+            <label for="reg-degree">Degree and university</label>
+            <input type="text" id="reg-degree" name="degree_university" required
+                   placeholder="e.g. MSc Informatics, TUM" aria-describedby="reg-degree-err">
+            <p class="field-error" id="reg-degree-err" aria-live="polite"></p>
+          </div>
+
+          <fieldset class="field" id="reg-branches" aria-describedby="reg-branches-hint reg-branches-err">
+            <legend>Branches of interest</legend>
+            <p class="hint" id="reg-branches-hint">Pick one or more.</p>
+            <div class="checks">
+              <label class="check">
+                <input type="checkbox" name="branch" value="Compute verification">
+                <span>Compute verification<small>Reading group and research on verification mechanisms</small></span>
+              </label>
+              <label class="check">
+                <input type="checkbox" name="branch" value="AI governance">
+                <span>AI governance<small>Reading groups and workshops on AI regulation</small></span>
+              </label>
+              <label class="check">
+                <input type="checkbox" name="branch" value="Incident database project">
+                <span>Incident database project<small>Building a database of reported AI safety incidents</small></span>
+              </label>
+            </div>
+            <p class="field-error" id="reg-branches-err" aria-live="polite"></p>
+          </fieldset>
+
+          <div class="field">
+            <label for="reg-why">Why are you interested in the club?</label>
+            <textarea id="reg-why" name="motivation" required maxlength="2000" aria-describedby="reg-why-err"></textarea>
+            <p class="field-error" id="reg-why-err" aria-live="polite"></p>
+          </div>
+
+          <div class="field">
+            <label class="check check--plain">
+              <input type="checkbox" id="reg-consent" name="consent" value="yes" required aria-describedby="reg-consent-err">
+              <span>I agree that Safe AI Munich stores these details to contact me about the Student Initiative. I can ask for them to be deleted at any time via hello@safeaimunich.org. Details in the <a href="/privacy" target="_blank" rel="noopener">privacy policy</a>.</span>
+            </label>
+            <p class="field-error" id="reg-consent-err" aria-live="polite"></p>
+          </div>
+
+          <div>
+            <button type="submit" class="btn btn--ink">Register</button>
+          </div>
+          <p class="reg-status" id="reg-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
        CONTACT + SOCIALS
        ================================================================ -->
   <section class="band band--ink" id="contact">
@@ -822,6 +977,7 @@
             <li><a href="#events">Events</a></li>
             <li><a href="#reading">Reading list</a></li>
             <li><a href="#get-involved">Get involved</a></li>
+            <li><a href="#register">Register</a></li>
           </ul>
         </div>
         <div class="foot-col">
@@ -846,9 +1002,7 @@
 
     <div class="foot-bottom">
       <div>© 2026 Munich AI Safety</div>
-      <!-- TODO (required before launch, open task in the planning doc):
-           Impressum and Privacy policy pages. Add them here once they exist:
-           <div><a href="/impressum">Impressum</a> · <a href="/privacy">Privacy policy</a></div> -->
+      <div><a href="/impressum" style="color:inherit">Impressum</a> · <a href="/privacy" style="color:inherit">Privacy policy</a></div>
       <div>Munich AI Safety Student Initiative</div>
     </div>
   </div>
@@ -878,6 +1032,139 @@
 
     if (fallback) fallback.remove();
     frame.appendChild(iframe);
+  })();
+</script>
+
+<script>
+  /* ------------------------------------------------------------------
+     REGISTRATION SETUP (one-line change)
+     1. Go to https://web3forms.com, enter the club inbox
+        (e.g. hello@safeaimunich.org) and copy the access key it emails you.
+     2. Paste it into WEB3FORMS_ACCESS_KEY below.
+     Every registration is then emailed to that inbox. The key is safe
+     to publish; it only lets people send submissions to that inbox.
+
+     Using Formspree instead? Set REGISTRATION_ENDPOINT to your form URL
+     (https://formspree.io/f/XXXX) and leave the access key empty.
+     ------------------------------------------------------------------ */
+  var WEB3FORMS_ACCESS_KEY = ""; // e.g. "a1b2c3d4-...."
+  var REGISTRATION_ENDPOINT = "https://api.web3forms.com/submit";
+
+  (function () {
+    var form = document.getElementById("reg-form");
+    if (!form) return;
+
+    var status = document.getElementById("reg-status");
+    var submitBtn = form.querySelector('button[type="submit"]');
+    var branchBoxes = form.querySelectorAll('input[name="branch"]');
+
+    form.action = REGISTRATION_ENDPOINT;
+    form.elements.access_key.value = WEB3FORMS_ACCESS_KEY;
+
+    // "Join this branch" buttons pre-tick the matching branch
+    document.querySelectorAll("a[data-branch]").forEach(function (link) {
+      link.addEventListener("click", function () {
+        var wanted = link.getAttribute("data-branch");
+        branchBoxes.forEach(function (box) {
+          if (box.value === wanted) box.checked = true;
+        });
+        clearError("reg-branches-err");
+      });
+    });
+
+    function setError(input, errId, msg) {
+      var el = document.getElementById(errId);
+      if (el) el.textContent = msg;
+      if (input) input.setAttribute("aria-invalid", msg ? "true" : "false");
+    }
+    function clearError(errId) {
+      var el = document.getElementById(errId);
+      if (el) el.textContent = "";
+    }
+    function setStatus(kind, msg) {
+      status.className = "reg-status" + (kind ? " reg-status--" + kind : "");
+      status.textContent = msg;
+    }
+
+    function validate() {
+      var firstBad = null;
+      function check(input, errId, ok, msg) {
+        setError(input, errId, ok ? "" : msg);
+        if (!ok && !firstBad) firstBad = input;
+      }
+      var name = form.elements.name;
+      var email = form.elements.email;
+      var degree = form.elements.degree_university;
+      var why = form.elements.motivation;
+      var consent = form.elements.consent;
+      var anyBranch = Array.prototype.some.call(branchBoxes, function (b) { return b.checked; });
+
+      check(name, "reg-name-err", name.value.trim() !== "", "Please enter your name.");
+      check(email, "reg-email-err", email.value.trim() !== "" && email.validity.valid, "Please enter a valid university email address.");
+      check(degree, "reg-degree-err", degree.value.trim() !== "", "Please enter your degree and university.");
+      check(branchBoxes[0], "reg-branches-err", anyBranch, "Please pick at least one branch.");
+      check(why, "reg-why-err", why.value.trim() !== "", "Please tell us briefly why you are interested.");
+      check(consent, "reg-consent-err", consent.checked, "Please agree so we can store your registration.");
+
+      if (firstBad) firstBad.focus();
+      return !firstBad;
+    }
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      setStatus("", "");
+      if (!validate()) return;
+
+      if (REGISTRATION_ENDPOINT.indexOf("web3forms") !== -1 && !WEB3FORMS_ACCESS_KEY) {
+        setStatus("err", "Registration is not connected yet. Please email hello@safeaimunich.org in the meantime.");
+        console.warn("Registration form: set WEB3FORMS_ACCESS_KEY in student-initiative/index.html");
+        return;
+      }
+
+      // Send the ticked branches as one readable field instead of repeats
+      var data = new FormData(form);
+      data.delete("branch");
+      data.set("branches", Array.prototype.filter.call(branchBoxes, function (b) { return b.checked; })
+        .map(function (b) { return b.value; }).join(", "));
+      if (!WEB3FORMS_ACCESS_KEY) data.delete("access_key");
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Sending…";
+
+      fetch(REGISTRATION_ENDPOINT, {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" }
+      })
+        .then(function (res) {
+          return res.json().catch(function () { return {}; }).then(function (body) {
+            if (!res.ok || body.success === false) throw new Error(body.message || "HTTP " + res.status);
+          });
+        })
+        .then(function () {
+          form.reset();
+          setStatus("ok", "Thanks, you are registered. We will be in touch by email soon.");
+        })
+        .catch(function (err) {
+          console.error("Registration failed:", err);
+          setStatus("err", "Something went wrong sending your registration. Please try again, or email hello@safeaimunich.org.");
+        })
+        .then(function () {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Register";
+        });
+    });
+
+    // Clear a field's error as soon as the user fixes it
+    form.addEventListener("input", function (e) {
+      var t = e.target;
+      var errId = t.name === "branch" ? "reg-branches-err" : t.getAttribute("aria-describedby");
+      if (!errId) return;
+      errId.split(" ").forEach(function (id) {
+        if (/-err$/.test(id)) clearError(id);
+      });
+      t.removeAttribute("aria-invalid");
+    });
   })();
 </script>
 
