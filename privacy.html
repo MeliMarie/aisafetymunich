@@ -1,133 +1,112 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Privacy policy — Safe AI Munich</title>
-<meta name="description" content="How Safe AI Munich handles personal data on this website and in the Student Initiative registration form.">
-<meta name="robots" content="noindex">
-<link rel="canonical" href="https://safeaimunich.org/privacy">
-<style>
-  /* Legal pages deliberately use system fonts only, so no third-party
-     requests are made when someone reads the privacy policy. */
-  * { box-sizing: border-box; }
-  body {
-    margin: 0; background: #FFFFFF; color: #1c1f24; line-height: 1.65; font-size: 17px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  }
-  a { color: #002F45; }
-  a:focus-visible { outline: 3px solid #E3A750; outline-offset: 3px; border-radius: 3px; }
-  .skip { position: absolute; left: -9999px; top: 0; background: #E3A750; color: #002F45; padding: 10px 18px; font-weight: 700; }
-  .skip:focus { left: 8px; top: 8px; }
-  nav { background: #002F45; }
-  nav .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding-top: 14px; padding-bottom: 14px; }
-  nav a { color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: .95rem; }
-  nav .brand { font-size: 1.1rem; font-weight: 700; }
-  nav .links { display: flex; gap: 22px; flex-wrap: wrap; }
-  .wrap { max-width: 820px; margin: 0 auto; padding: 0 24px; }
-  main { padding: 56px 0 72px; }
-  h1 { font-size: clamp(2rem, 4vw, 2.6rem); line-height: 1.15; color: #002F45; margin: 0 0 10px; }
-  h2 { font-size: 1.35rem; color: #002F45; margin: 40px 0 10px; }
-  h3 { font-size: 1.05rem; margin: 24px 0 6px; }
-  p, ul { margin: 0 0 14px; }
-  ul { padding-left: 1.3em; }
-  li { margin-bottom: 6px; }
-  .meta { color: #565b6e; margin-bottom: 32px; }
-  .box { background: #EEF2FA; border-radius: 10px; padding: 18px 22px; margin: 0 0 14px; }
-  footer { border-top: 1px solid #dce7e2; color: #565b6e; font-size: .9rem; padding: 26px 0; }
-  footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-  footer a { color: #565b6e; }
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Privacy policy | Munich AI Safety (MAIS)</title>
+<meta name="description" content="How munichaisafety.com handles your data.">
+<link rel="canonical" href="https://munichaisafety.com/privacy">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Munich AI Safety (MAIS)">
+<meta property="og:title" content="Privacy policy | Munich AI Safety (MAIS)">
+<meta property="og:description" content="How munichaisafety.com handles your data.">
+<meta property="og:url" content="https://munichaisafety.com/privacy">
+<meta property="og:image" content="https://munichaisafety.com/assets/img/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="color-scheme" content="light">
+<link rel="preload" href="assets/fonts/schibsted-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/ibm-plex-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/site.css">
+<!-- Analytics: paste the GoatCounter snippet here once the account exists (see README.md). -->
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<nav aria-label="Safe AI Munich">
-  <div class="wrap">
-    <a class="brand" href="/">Safe AI Munich</a>
-    <div class="links">
-      <a href="/student-initiative/">Students</a>
-      <a href="/resources">Resources</a>
-      <a href="/impressum">Impressum</a>
-    </div>
+<header class="site-header" data-theme="dark">
+  <div class="container site-header__inner">
+    <a class="site-header__logo" href="/" aria-label="Munich AI Safety, home"><canvas class="site-header__mark" data-mais-logo aria-hidden="true"></canvas><span>MAIS</span></a>
+    <nav class="site-header__nav" aria-label="Site">
+      <a href="/#paths">Start here</a>
+      <a href="/#events">Events</a>
+      <a href="/#volunteer">Get involved</a>
+    </nav>
+    <a class="btn btn-secondary" href="/student-initiative/">Students</a>
+    <a class="btn btn-primary" href="/join"><span class="label-long">Join the WhatsApp community</span><span class="label-short">Join us</span></a>
   </div>
-</nav>
+</header>
 
 <main id="main">
-  <div class="wrap">
-    <h1>Privacy policy</h1>
-    <p class="meta">Last updated: 20 October 2026</p>
 
-    <p>This policy explains what personal data we process when you visit safeaimunich.org or register for the Munich AI Safety Student Initiative, why we do it, and what rights you have under the EU General Data Protection Regulation (GDPR).</p>
-
-    <!-- TODO (club leads): fill in the controller details. They must match
-         the Impressum. If the club is a registered association (e.V.) or a
-         university-recognised group, use its official name. -->
-    <h2>1. Who is responsible</h2>
-    <div class="box">
-      <p><strong>[Full name of the responsible person or organisation]</strong><br>
-      [Street and number]<br>
-      [Postcode] München, Germany<br>
-      Email: <a href="mailto:hello@safeaimunich.org">hello@safeaimunich.org</a></p>
+  <section class="page-hero" data-theme="dark" aria-labelledby="hero-title">
+    <div class="container">
+      <div class="page-hero__inner">
+        <p class="eyebrow page-hero__eyebrow">Data protection</p>
+        <h1 id="hero-title" class="display">Privacy policy</h1>
+      </div>
     </div>
-    <p>We are a volunteer student community and are not required to appoint a data protection officer. For any privacy question, write to the address above.</p>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="prose body">
+        <h2>Who is responsible</h2>
+        <p>The controller for this website under the General Data Protection Regulation (GDPR) is:</p>
+        <address>
+          Munich AI Safety (MAIS)<br>
+          Munich, Germany<br>
+          Email: hello@safeaimunich.org
+        </address>
+        <h2>Hosting</h2>
+        <p>This website is hosted on GitHub Pages, a service of GitHub, Inc., USA. When you visit, GitHub processes technical data needed to deliver the pages, including your IP address, in server logs. The legal basis is our legitimate interest in running a secure, working website (Art. 6 (1) (f) GDPR). GitHub may process this data in the United States. GitHub relies on the EU–US Data Privacy Framework and the EU Standard Contractual Clauses for these transfers. See <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub's privacy statement</a>.</p>
+        <h2>Fonts</h2>
+        <p>The fonts on this site are stored on our own server. Your browser does not connect to Google or any other font provider.</p>
+        <h2>Student Initiative registration form (Google Forms)</h2>
+        <p>On the <a href="/student-initiative/#register">Student Initiative page</a> you can register for the club. We collect:</p>
+        <ul>
+          <li>your name and last name</li>
+          <li>your degree (programme and university)</li>
+          <li>your university email address</li>
+          <li>the part of the club you are most interested in</li>
+          <li>your answer to why you are interested in the club</li>
+          <li>the date and time you sent the form</li>
+        </ul>
+        <p>We use this only to add you to the branch and reading groups you picked, invite you to sessions and events, and contact you about the Student Initiative. We do not sell it or use it for advertising. The legal basis is your consent, which you give by ticking the box before sending the form (Art. 6 (1) (a) GDPR). You can withdraw it at any time by emailing hello@safeaimunich.org. This does not affect processing before the withdrawal.</p>
+        <p>The form is run with Google Forms, a service of Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland. Nothing is sent to Google when you only view the page. When you press "Register", your browser sends your answers directly to Google, which stores them in the club's Google account and also receives your IP address and browser information. If you are signed in to Google, Google may link this to your account. If you open the form on Google's own page instead, Google's privacy policy and cookies apply there. Google may process data in the United States; Google LLC is certified under the EU–US Data Privacy Framework, and transfers are also covered by the EU Standard Contractual Clauses. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's privacy policy</a>.</p>
+        <p>Only the club leads and organisers who coordinate the branches can see the responses. We keep them while you are an active member, and at most until the end of the academic year after your last contact with us. We review the responses at the start of each semester and delete entries of people who have left, in Google Forms and in any linked spreadsheet. If you ask us to delete your data, we do so within 30 days.</p>
+        <h2>Event calendar from Luma</h2>
+        <p>The home page shows our event calendar, provided by Luma AI, Inc., USA, as an embedded frame. When the calendar loads, your browser connects to Luma, which receives data such as your IP address and browser information and may set cookies. The legal basis is our legitimate interest in showing our events in one place (Art. 6 (1) (f) GDPR). You can also open the calendar directly on Luma. See <a href="https://luma.com/privacy-policy" target="_blank" rel="noopener">Luma's privacy policy</a>.</p>
+        <h2>WhatsApp, the volunteer form and LinkedIn</h2>
+        <p>Our WhatsApp community, our volunteer form (Airtable) and our LinkedIn page are run on those providers' services. Nothing is shared with them when you visit this site. If you follow a link and join, fill in the form or interact with a post, the provider processes your data under its own privacy policy, and we see what you share there, such as your name, phone number or form answers. We use what you send us through the volunteer form only to get in touch about volunteering.</p>
+        <h2>Email</h2>
+        <p>If you email us, we use your address and message only to reply. The legal basis is your request (Art. 6 (1) (b) GDPR) or our legitimate interest in answering (Art. 6 (1) (f) GDPR). We delete the messages when they are no longer needed.</p>
+        <h2>Your rights</h2>
+        <p>You have the right to access, correct and delete your data, to restrict or object to its processing, to data portability, and to withdraw consent at any time with effect for the future. To use these rights, email hello@safeaimunich.org.</p>
+        <p>You can also complain to a data protection authority. For Bavaria, this is the Bavarian Data Protection Authority (Bayerisches Landesamt für Datenschutzaufsicht, BayLDA).</p>
+      </div>
+    </div>
+  </section>
 
-    <h2>2. Registration form (Student Initiative)</h2>
-    <h3>What we collect</h3>
-    <ul>
-      <li>Name and university email address</li>
-      <li>Phone number, only if you choose to give it</li>
-      <li>Degree and university</li>
-      <li>The branches you are interested in</li>
-      <li>Your answer to why you are interested in the club</li>
-      <li>Your consent and the time you submitted the form</li>
-    </ul>
-    <h3>Why</h3>
-    <p>To add you to the branches and reading groups you picked, invite you to sessions and events, and contact you about the Student Initiative. If you give a phone number, we only use it to add you to the club's group chat. We do not sell your data or use it for advertising.</p>
-    <h3>Legal basis</h3>
-    <p>Your consent, given by ticking the box on the form (Art. 6(1)(a) GDPR). You can withdraw it at any time by emailing us. Withdrawal does not affect processing that happened before it.</p>
-    <h3>Who receives it</h3>
-    <p>Only the club leads and organisers who coordinate the branches. To deliver the form to our inbox we use <a href="https://web3forms.com/privacy" rel="noopener">Web3Forms</a>, which acts as our data processor. Web3Forms runs on Amazon Web Services and Cloudflare, so your data may be processed outside the EU, including in the United States. Such transfers rely on the EU–US Data Privacy Framework where the provider is certified, or on the EU Standard Contractual Clauses.</p>
-    <h3>How long we keep it</h3>
-    <p>As long as you are an active member, and at most until the end of the academic year after your last contact with us. We review the list at the start of each semester and delete entries of people who have left. If you ask us to delete your data, we do so within 30 days.</p>
-
-    <h2>3. Visiting the website</h2>
-    <h3>Hosting</h3>
-    <p>This website is hosted on GitHub Pages, a service of GitHub Inc., USA. When you open a page, GitHub's servers process technical data such as your IP address, the page requested, date and time, and browser information, in order to deliver the site and keep it secure. Legal basis: our legitimate interest in running a secure website (Art. 6(1)(f) GDPR). See the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">GitHub Privacy Statement</a>.</p>
-    <h3>Fonts and scripts loaded from third parties</h3>
-    <p>Some pages load fonts from Google Fonts (Google Ireland Ltd. / Google LLC) and JavaScript libraries from the unpkg content delivery network. To do this, your browser connects to their servers, which receive your IP address. Legal basis: Art. 6(1)(f) GDPR, our interest in presenting the site consistently.</p>
-    <h3>Embedded calendar</h3>
-    <p>Once enabled, the Student Initiative page shows an events calendar from Luma (Luma AI Inc., USA). Loading it sends your IP address and browser information to Luma. See the <a href="https://lu.ma/privacy-policy" rel="noopener">Luma privacy policy</a>.</p>
-    <h3>Links to WhatsApp, LinkedIn and email</h3>
-    <p>Links to our WhatsApp group or other platforms only send data to those services when you click them. From then on, their own privacy policies apply.</p>
-    <h3>Cookies and tracking</h3>
-    <p>We do not set cookies and do not use analytics or tracking tools.</p>
-
-    <h2>4. Contacting us by email</h2>
-    <p>If you email us, we use your address and message only to reply. Legal basis: Art. 6(1)(f) GDPR. We delete the correspondence once it is no longer needed.</p>
-
-    <h2>5. Your rights</h2>
-    <p>You have the right to:</p>
-    <ul>
-      <li>access the data we hold about you (Art. 15 GDPR)</li>
-      <li>have it corrected (Art. 16) or deleted (Art. 17)</li>
-      <li>restrict its processing (Art. 18)</li>
-      <li>receive it in a portable format (Art. 20)</li>
-      <li>object to processing based on legitimate interest (Art. 21)</li>
-      <li>withdraw your consent at any time (Art. 7(3))</li>
-    </ul>
-    <p>Email <a href="mailto:hello@safeaimunich.org">hello@safeaimunich.org</a> to use any of them. You can also complain to a data protection supervisory authority. For private bodies in Bavaria this is the Bayerisches Landesamt für Datenschutzaufsicht (BayLDA), Promenade 18, 91522 Ansbach, <a href="https://www.lda.bayern.de" rel="noopener">www.lda.bayern.de</a>.</p>
-
-    <h2>6. Changes</h2>
-    <p>We update this policy when the website or our tools change. The date at the top shows the latest version.</p>
-  </div>
 </main>
 
-<footer>
-  <div class="wrap">
-    <div>© 2026 AI Safety Munich</div>
-    <div><a href="/">Home</a> · <a href="/impressum">Impressum</a> · <a href="mailto:hello@safeaimunich.org">Contact</a></div>
+<footer class="site-footer" data-theme="dark">
+  <div class="container site-footer__grid">
+    <div class="site-footer__col">
+      <p class="site-footer__name">Munich AI Safety (MAIS)</p>
+      <p>Munich, Germany</p>
+      <a href="mailto:hello@safeaimunich.org">hello@safeaimunich.org</a>
+    </div>
+    <nav class="site-footer__col" aria-label="Legal">
+      <a href="/impressum">Impressum</a>
+      <a href="/privacy">Privacy policy</a>
+    </nav>
+    <nav class="site-footer__col" aria-label="Elsewhere">
+      <a href="/join">WhatsApp</a>
+      <a href="https://luma.com/cal-iQKye42k20Y8pAv" target="_blank" rel="noopener" data-goatcounter-click="luma-footer">Luma</a>
+    </nav>
   </div>
 </footer>
+<script src="assets/js/mais-net.js" defer></script>
 </body>
 </html>
