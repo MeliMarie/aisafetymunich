@@ -311,6 +311,11 @@
   }
   .cal-empty h3 { font-size: 1.25rem; }
   .cal-empty p { color: var(--body-dark); max-width: 460px; }
+  .cal-link { margin-top: 18px; }
+  .visually-hidden {
+    position: absolute; width: 1px; height: 1px; overflow: hidden;
+    clip: rect(0 0 0 0); white-space: nowrap;
+  }
 
   /* ================================================================== */
   /*  Reading list                                                       */
@@ -698,21 +703,14 @@
         <p>Everything we run is listed on our Luma calendar. Subscribe there to get new events automatically, or join the WhatsApp group to hear about them first.</p>
       </div>
 
-      <!-- =================================================================
-           LUMA SETUP (one-line change):
-           Put the calendar ID into LUMA_CALENDAR_ID in the script below.
-           From your Luma calendar page the URL looks like
-             https://lu.ma/safeaimunich   ->  ID is "safeaimunich"
-           Until it is set, the fallback card below is shown instead.
-           ============================================================== -->
-      <div class="cal-frame" id="luma-frame">
-        <div class="cal-empty" id="luma-fallback">
-          <p class="eyebrow eyebrow--on-ink" style="margin-bottom:0">Calendar coming soon</p>
-          <h3>The calendar is being set up</h3>
-          <p>Our Luma calendar goes live together with the Winter Semester programme. In the meantime, the WhatsApp group is where every session gets announced.</p>
-          <a class="btn btn--gold" href="https://chat.whatsapp.com/BAvF88QyfrDKZMKo7whRX7?s=cl&amp;p=i&amp;ilr=4">Get event announcements</a>
-        </div>
+      <!-- MAISSI Luma calendar (https://luma.com/maissi).
+           The embed needs the calendar's internal ID, not the "maissi"
+           handle: cal-CJBJyoa9DMwgyxQ. lt=dark matches this dark section. -->
+      <div class="cal-frame">
+        <iframe src="https://luma.com/embed/calendar/cal-CJBJyoa9DMwgyxQ/events?lt=dark"
+                title="MAISSI events on Luma" loading="lazy" allowfullscreen></iframe>
       </div>
+      <p class="cal-link"><a class="btn btn--gold btn--sm" href="https://luma.com/maissi" target="_blank" rel="noopener">Subscribe on Luma <span class="visually-hidden">(opens in a new tab)</span></a></p>
     </div>
   </section>
 
@@ -1006,33 +1004,6 @@
     </div>
   </div>
 </footer>
-
-<script>
-  /* ------------------------------------------------------------------
-     Luma calendar embed.
-     Set LUMA_CALENDAR_ID to your calendar's handle to switch the
-     fallback card out for the live calendar. Nothing else to change.
-     ------------------------------------------------------------------ */
-  var LUMA_CALENDAR_ID = ""; // e.g. "safeaimunich"
-
-  (function () {
-    if (!LUMA_CALENDAR_ID) return;
-
-    var frame = document.getElementById("luma-frame");
-    var fallback = document.getElementById("luma-fallback");
-    if (!frame) return;
-
-    var iframe = document.createElement("iframe");
-    iframe.src = "https://lu.ma/embed/calendar/" + encodeURIComponent(LUMA_CALENDAR_ID) + "/events";
-    iframe.title = "Safe AI Munich Student Initiative events calendar";
-    iframe.loading = "lazy";
-    iframe.allow = "fullscreen";
-    iframe.setAttribute("allowfullscreen", "");
-
-    if (fallback) fallback.remove();
-    frame.appendChild(iframe);
-  })();
-</script>
 
 <script>
   /* ------------------------------------------------------------------
