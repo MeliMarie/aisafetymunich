@@ -158,6 +158,33 @@
   }
   .nav2-links a:hover { color: var(--ink); border-bottom-color: var(--gold); }
 
+  /* ---- Fellowship programme ------------------------------------------ */
+  #fellowship .fellowship-layout {
+    display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 48px; align-items: start;
+  }
+  #fellowship .section-head { margin-bottom: 0; }
+  #fellowship .fellowship-start { margin: 18px 0 26px; color: var(--body); }
+  #fellowship .fellowship-topics {
+    background: #FFFFFF; border: 1px solid var(--paper-line);
+    border-radius: var(--radius); padding: 24px;
+  }
+  #fellowship .fellowship-topics h3 { font-size: 1.12rem; margin-bottom: 10px; }
+  #fellowship .fellowship-weeks { list-style: none; margin: 0; padding: 0; }
+  #fellowship .fellowship-weeks li {
+    display: grid; grid-template-columns: 54px minmax(0, 1fr); gap: 12px;
+    padding: 11px 0; border-bottom: 1px solid var(--paper-line);
+    font-size: .94rem; line-height: 1.45;
+  }
+  #fellowship .fellowship-weeks li:last-child { border-bottom: 0; padding-bottom: 0; }
+  #fellowship .week-label {
+    font-family: var(--font-mono); font-size: .73rem;
+    text-transform: uppercase; color: var(--body); padding-top: 3px;
+  }
+  @media (max-width: 760px) {
+    #fellowship .fellowship-layout { grid-template-columns: 1fr; gap: 32px; }
+  }
+
   /* ---- Buttons ------------------------------------------------------- */
   .btn {
     display: inline-flex; align-items: center; justify-content: center; gap: 9px;
@@ -697,16 +724,30 @@
        AI SAFETY FELLOWSHIP
        ================================================================ -->
   <section class="band" id="fellowship" aria-labelledby="fellowship-heading">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow eyebrow--gold">Fellowship</p>
-        <h2 id="fellowship-heading">Participate in the AI Safety Fellowship</h2>
-        <p>Apply to join the AI Safety Fellowship through our application form.</p>
+    <div class="wrap fellowship-layout">
+      <div>
+        <div class="section-head">
+          <p class="eyebrow eyebrow--gold">Fellowship</p>
+          <h2 id="fellowship-heading">Participate in the AI Safety Fellowship</h2>
+          <p>Apply to join the AI Safety Fellowship through our application form.</p>
+        </div>
+        <p class="fellowship-start"><strong>Week 1:</strong> <time datetime="2026-11-17">Tuesday, 17 November 2026</time></p>
+        <a class="btn btn--gold" href="https://forms.gle/bB5veM4RntUCavif7" target="_blank" rel="noopener noreferrer">
+          Apply on Google Forms <span aria-hidden="true">↗</span>
+          <span class="visually-hidden">(opens in a new tab)</span>
+        </a>
       </div>
-      <a class="btn btn--gold" href="https://forms.gle/bB5veM4RntUCavif7" target="_blank" rel="noopener noreferrer">
-        Apply on Google Forms <span aria-hidden="true">↗</span>
-        <span class="visually-hidden">(opens in a new tab)</span>
-      </a>
+      <div class="fellowship-topics" aria-labelledby="fellowship-topics-heading">
+        <h3 id="fellowship-topics-heading">Six weeks at a glance</h3>
+        <ol class="fellowship-weeks">
+          <li><span class="week-label">Week 1</span><span>AI futures &amp; community</span></li>
+          <li><span class="week-label">Week 2</span><span>From AI failures to serious risks</span></li>
+          <li><span class="week-label">Week 3</span><span>AI, jobs &amp; who benefits</span></li>
+          <li><span class="week-label">Week 4</span><span>Alignment &amp; technical safety</span></li>
+          <li><span class="week-label">Week 5</span><span>Rules, trust &amp; compute verification</span></li>
+          <li><span class="week-label">Week 6</span><span>Projects &amp; next steps</span></li>
+        </ol>
+      </div>
     </div>
   </section>
 
@@ -936,11 +977,11 @@
         </div>
 
         <div class="lead-card">
-          <p class="role">Governance Lead</p>
+          <p class="role">Fellowship Lead</p>
           <h3>Begüm Balat</h3>
-          <p>Questions about the governance branch, the workshops or the reporting database.</p>
+          <p>Questions about the AI Safety Fellowship, the workshops or the reporting database.</p>
           <div class="social-row">
-            <a class="btn btn--ghost-paper btn--sm" href="mailto:hello@safeaimunich.org?subject=AI%20Governance">Email the team</a>
+            <a class="btn btn--ghost-paper btn--sm" href="mailto:hello@safeaimunich.org?subject=AI%20Safety%20Fellowship">Email the team</a>
           </div>
         </div>
 
