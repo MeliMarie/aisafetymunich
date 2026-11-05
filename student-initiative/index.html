@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Student Initiative — AI Safety Munich</title>
+<title>Student Initiative — Munich AI Safety</title>
 <meta name="description" content="The Munich AI Safety Student Initiative unites students, academics and experts to learn and work on the most pressing risks posed by advanced AI. Two branches: compute verification and AI governance.">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Munich AI Safety Student Initiative">
 <meta property="og:description" content="We unite students, academics and experts to learn and work on the most pressing risks posed by advanced artificial intelligence.">
-<meta property="og:url" content="https://safeaimunich.org/student-initiative/">
+<meta property="og:url" content="https://munichaisafety.com/student-initiative/">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://safeaimunich.org/student-initiative/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%2315171C'/%3E%3Ccircle cx='9' cy='7' r='2.5' fill='%23F4EFE6'/%3E%3Crect x='6.5' y='10' width='5' height='8.5' rx='2.5' fill='%23F4EFE6'/%3E%3Ccircle cx='16' cy='8.6' r='2.1' fill='%23E3A83B'/%3E%3Crect x='13.9' y='11.2' width='4.2' height='7.3' rx='2.1' fill='%23E3A83B'/%3E%3C/svg%3E">
+<link rel="canonical" href="https://munichaisafety.com/student-initiative/">
+<link rel="icon" type="image/png" href="/assets/img/maissi-emblem.png">
 
 <!-- Fonts are self-hosted (same files as the main site), so no request
      goes to Google Fonts. See the privacy policy. -->
@@ -120,7 +120,10 @@
     letter-spacing: -0.01em; text-decoration: none; color: var(--paper);
     padding: 7px 0;
   }
-  .brand svg { flex-shrink: 0; }
+  .brand-mark {
+    width: 40px; height: 34px; flex: none;
+    --text: var(--paper); --accent: var(--gold);
+  }
   .nav1-links { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
   .nav1-links a {
     color: var(--body-dark); text-decoration: none; font-weight: 500;
@@ -134,7 +137,7 @@
   /* ================================================================== */
   .nav2 {
     position: sticky; top: 0; z-index: 20;
-    background: rgba(244,239,230,.92);
+    background: rgba(243,246,250,.94);
     backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--paper-line);
   }
@@ -143,9 +146,11 @@
     min-height: 60px;
   }
   .nav2-title {
+    display: inline-flex; align-items: center; gap: 10px; flex: none;
     font-family: var(--font-head); font-weight: 700; font-size: 1.02rem;
     letter-spacing: -0.01em; text-decoration: none; white-space: nowrap;
   }
+  .nav2-logo { display: block; width: 66px; height: 48px; object-fit: contain; flex: none; }
   .nav2-right { display: flex; align-items: center; gap: 24px; min-width: 0; }
   .nav2-links {
     display: flex; gap: 24px; overflow-x: auto; scrollbar-width: none;
@@ -491,10 +496,13 @@
     .card, .branch-top, .branch-more, .branch-foot, .lead-card { padding-left: 22px; padding-right: 22px; }
     .branch summary { padding-left: 22px; padding-right: 22px; }
   }
-  /* The level-2 nav links scroll horizontally on narrow screens; hide the
-     wordmark there so the links and the Join button keep enough room. */
-  @media (max-width: 560px) {
-    .nav2-title { display: none; }
+  /* Keep the emblem visible while the section links scroll on mobile. */
+  @media (max-width: 680px) {
+    .nav2 .wrap { gap: 12px; }
+    .nav2-title span { display: none; }
+    .nav2-logo { width: 48px; height: 40px; }
+    .nav2-right { flex: 1; gap: 12px; }
+    .nav2-right > .btn { flex: none; padding-inline: 12px; }
   }
 </style>
 </head>
@@ -503,18 +511,13 @@
 <a class="skip" href="#main">Skip to content</a>
 
 <!-- =====================================================================
-     LEVEL 1 NAV — top-level nav, same as on the Safe AI Munich landing page
+     LEVEL 1 NAV — top-level nav, same as on the Munich AI Safety landing page
      ================================================================== -->
 <div class="nav1">
-  <nav class="wrap" aria-label="AI Safety Munich">
-    <a class="brand" href="/">
-      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <circle cx="9" cy="6.4" r="2.6" fill="#F4EFE6"/>
-        <rect x="6.4" y="9.6" width="5.2" height="9.2" rx="2.6" fill="#F4EFE6"/>
-        <circle cx="16.4" cy="8.2" r="2.2" fill="#E3A83B"/>
-        <rect x="14.2" y="10.9" width="4.4" height="7.9" rx="2.2" fill="#E3A83B"/>
-      </svg>
-      AI Safety Munich
+  <nav class="wrap" aria-label="Munich AI Safety">
+    <a class="brand" href="/" aria-label="Munich AI Safety, home">
+      <canvas class="brand-mark" data-mais-logo aria-hidden="true"></canvas>
+      Munich AI Safety
     </a>
     <div class="nav1-links">
       <a href="/#what-we-do">What we do</a>
@@ -531,7 +534,10 @@
      ================================================================== -->
 <div class="nav2">
   <nav class="wrap" aria-label="Student Initiative">
-    <a class="nav2-title" href="/student-initiative/">Student Initiative</a>
+    <a class="nav2-title" href="/student-initiative/" aria-label="Munich AI Safety Student Initiative, home">
+      <img class="nav2-logo" src="/assets/img/maissi-emblem.png" width="66" height="48" alt="">
+      <span>Student Initiative</span>
+    </a>
     <div class="nav2-right">
       <div class="nav2-links">
         <a href="#about">About</a>
@@ -627,7 +633,7 @@
           <div class="row-num">03</div>
           <div>
             <h3>We connect Munich to the wider field</h3>
-            <p>Workshops with AI safety organisations and startups, talks, and introductions to people already working in the field. We are part of the broader Safe AI Munich community, so students and professionals meet.</p>
+            <p>Workshops with AI safety organisations and startups, talks, and introductions to people already working in the field. We are part of the broader Munich AI Safety community, so students and professionals meet.</p>
           </div>
         </div>
       </div>
@@ -1006,16 +1012,11 @@
   <div class="wrap">
     <div class="foot-top">
       <div class="foot-about">
-        <a class="brand" href="/">
-          <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <circle cx="9" cy="6.4" r="2.6" fill="#F4EFE6"/>
-            <rect x="6.4" y="9.6" width="5.2" height="9.2" rx="2.6" fill="#F4EFE6"/>
-            <circle cx="16.4" cy="8.2" r="2.2" fill="#E3A83B"/>
-            <rect x="14.2" y="10.9" width="4.4" height="7.9" rx="2.2" fill="#E3A83B"/>
-          </svg>
-          Safe AI Munich
+        <a class="brand" href="/" aria-label="Munich AI Safety, home">
+          <canvas class="brand-mark" data-mais-logo aria-hidden="true"></canvas>
+          Munich AI Safety
         </a>
-        <p>The Student Initiative is part of Safe AI Munich, a community for everyone in Munich working on safe and beneficial AI.</p>
+        <p>The Student Initiative is part of Munich AI Safety, a community for everyone in Munich working on safe and beneficial AI.</p>
       </div>
 
       <div class="foot-cols">
@@ -1031,7 +1032,7 @@
           </ul>
         </div>
         <div class="foot-col">
-          <h4>Safe AI Munich</h4>
+          <h4>Munich AI Safety</h4>
           <ul>
             <li><a href="/">Main site</a></li>
             <li><a href="/#what-we-do">What we do</a></li>
@@ -1192,5 +1193,6 @@
   })();
 </script>
 
+<script src="/assets/js/mais-net.js" defer></script>
 </body>
 </html>
