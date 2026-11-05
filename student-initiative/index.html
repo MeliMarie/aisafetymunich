@@ -28,7 +28,11 @@
   :root {
    --ink:         #0d1a2c; /* navy: dark sections and text */
     --paper:      #f3f6fa; /* page background */
-    --gold:       #ff9150; /* Olympia orange */
+    --accent:       #b8e6a3; /* light green used for student events */
+    --accent-hover: #9fd686;
+    --accent-strong:#346443;
+    --accent-soft:  #e1f1db;
+    --focus:        var(--accent-strong);
     --isar:       #9db0c8; /* slate blue on navy */
     
      --ink-soft:   #142538;
@@ -79,7 +83,7 @@
   button:focus-visible,
   summary:focus-visible,
   .skip:focus-visible {
-    outline: 3px solid var(--gold);
+    outline: 3px solid var(--focus);
     outline-offset: 3px;
     border-radius: 4px;
   }
@@ -95,25 +99,21 @@
     text-transform: uppercase;
     margin: 0 0 14px;
   }
-  .eyebrow--gold { color: #A9761B; }           /* 4.9:1 on paper */
-  .eyebrow--on-ink { color: var(--gold); }     /* 8.6:1 on ink */
+  .eyebrow--accent { color: var(--accent-strong); }
+  .eyebrow--on-ink { color: var(--accent); }
+  .hero, .band--ink, footer { --focus: var(--accent); }
 
   /* ---- Skip link ----------------------------------------------------- */
   .skip {
     position: absolute; left: -9999px; top: 0; z-index: 100;
-    background: var(--gold); color: var(--ink);
+    background: var(--accent); color: var(--ink);
     padding: 12px 20px; font-weight: 600; text-decoration: none;
   }
   .skip:focus { left: 8px; top: 8px; }
 
   /* ================================================================== */
-  /*  Level 1 nav — same top-level nav as the main site                  */
+  /*  Shared parent-community wordmark                                  */
   /* ================================================================== */
-  .nav1 { background: var(--ink); color: var(--paper); font-size: .9rem; }
-  .nav1 .wrap {
-    display: flex; align-items: center; justify-content: space-between;
-    gap: 18px; min-height: 52px; flex-wrap: wrap;
-  }
   .brand {
     display: inline-flex; align-items: center; gap: 9px;
     font-family: var(--font-head); font-weight: 700; font-size: 1rem;
@@ -122,18 +122,11 @@
   }
   .brand-mark {
     width: 40px; height: 34px; flex: none;
-    --text: var(--paper); --accent: var(--gold);
+    --text: var(--paper);
   }
-  .nav1-links { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
-  .nav1-links a {
-    color: var(--body-dark); text-decoration: none; font-weight: 500;
-    padding: 7px 0; border-bottom: 2px solid transparent;
-  }
-  .nav1-links a:hover { color: var(--paper); }
-  .nav1-links a[aria-current="true"] { color: var(--paper); border-bottom-color: var(--gold); }
 
   /* ================================================================== */
-  /*  Level 2 nav — specific to the Student Initiative (sticky)          */
+  /*  Student navigation with a single return-to-MAIS wordmark           */
   /* ================================================================== */
   .nav2 {
     position: sticky; top: 0; z-index: 20;
@@ -147,10 +140,10 @@
   }
   .nav2-title {
     display: inline-flex; align-items: center; gap: 10px; flex: none;
-    font-family: var(--font-head); font-weight: 700; font-size: 1.02rem;
-    letter-spacing: -0.01em; text-decoration: none; white-space: nowrap;
+    font-family: var(--font-head); font-weight: 700; font-size: 1.5rem;
+    line-height: 2rem; letter-spacing: -0.02em; text-decoration: none; white-space: nowrap;
   }
-  .nav2-logo { display: block; width: 66px; height: 48px; object-fit: contain; flex: none; }
+  .nav2-title .brand-mark { --text: var(--ink); }
   .nav2-right { display: flex; align-items: center; gap: 24px; min-width: 0; }
   .nav2-links {
     display: flex; gap: 24px; overflow-x: auto; scrollbar-width: none;
@@ -161,7 +154,7 @@
     color: var(--body); text-decoration: none; font-size: .94rem; font-weight: 500;
     white-space: nowrap; padding: 4px 0; border-bottom: 2px solid transparent;
   }
-  .nav2-links a:hover { color: var(--ink); border-bottom-color: var(--gold); }
+  .nav2-links a:hover { color: var(--ink); border-bottom-color: var(--accent); }
 
   /* ---- Fellowship programme ------------------------------------------ */
   #fellowship .fellowship-layout {
@@ -199,8 +192,8 @@
     transition: transform .12s ease, background-color .12s ease;
   }
   .btn:hover { transform: translateY(-1px); }
-  .btn--gold { background: var(--gold); color: var(--ink); }
-  .btn--gold:hover { background: #D59A2B; }
+  .btn--accent { background: var(--accent); color: var(--ink); }
+  .btn--accent:hover { background: var(--accent-hover); }
   .btn--ink { background: var(--ink); color: var(--paper); }
   .btn--ink:hover { background: #24272F; }
   .btn--ghost-ink { background: transparent; color: var(--ink); border-color: #BFB6A6; }
@@ -238,7 +231,7 @@
     font-size: clamp(2.3rem, 6vw, 4rem);
     color: var(--paper); margin-bottom: 22px;
   }
-  .hero h1 em { font-style: normal; color: var(--gold); }
+  .hero h1 em { font-style: normal; color: var(--accent); }
   .hero-sub { font-size: 1.16rem; max-width: 600px; margin-bottom: 34px; }
   .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
   .hero-meta {
@@ -270,7 +263,7 @@
     display: flex; align-items: center; justify-content: center;
     font-family: var(--font-mono); font-size: .82rem; font-weight: 500;
   }
-  .band--ink .row-num { background: var(--ink-soft); color: var(--gold); }
+  .band--ink .row-num { background: var(--ink-soft); color: var(--accent); }
   .row h3 { font-size: 1.1rem; margin-bottom: 5px; }
   .row p { color: var(--body); font-size: .99rem; }
   .band--ink .row p { color: var(--body-dark); }
@@ -290,7 +283,7 @@
     font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
     padding: 5px 10px; border-radius: 5px; margin-bottom: 16px;
   }
-  .branch-tag--gold { background: #F7E4BE; color: #6E4A08; }
+  .branch-tag--accent { background: var(--accent-soft); color: var(--accent-strong); }
   .branch-tag--isar { background: #DFE6F1; color: #2F4466; }
   .branch h3 { font-size: 1.4rem; margin-bottom: 12px; }
   .branch-lede { color: var(--ink); font-size: 1.04rem; font-weight: 500; margin-bottom: 12px; }
@@ -304,7 +297,7 @@
   }
   .branch-facts li::before {
     content: ""; flex-shrink: 0; width: 6px; height: 6px; margin-top: .55em;
-    border-radius: 50%; background: var(--gold);
+    border-radius: 50%; background: var(--accent);
   }
   .branch details { border-top: 1px solid var(--paper-line); }
   .branch summary {
@@ -360,13 +353,13 @@
   }
   .read-kind {
     flex-shrink: 0; font-family: var(--font-mono); font-size: .68rem; font-weight: 500;
-    letter-spacing: .12em; text-transform: uppercase; color: #6E4A08;
-    background: #F7E4BE; padding: 5px 9px; border-radius: 5px; margin-top: 2px;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--accent-strong);
+    background: var(--accent-soft); padding: 5px 9px; border-radius: 5px; margin-top: 2px;
   }
   .read-body { flex: 1 1 320px; min-width: 0; }
   .read-body h3 { font-family: var(--font-text); font-weight: 600; font-size: 1.02rem; letter-spacing: 0; line-height: 1.45; margin-bottom: 4px; }
-  .read-body h3 a { text-decoration: none; border-bottom: 1px solid var(--gold); }
-  .read-body h3 a:hover { color: #6E4A08; }
+  .read-body h3 a { text-decoration: none; border-bottom: 1px solid var(--accent); }
+  .read-body h3 a:hover { color: var(--accent-strong); }
   .read-body p { color: var(--body); font-size: .93rem; }
   .readlist-note {
     margin-top: 20px; font-size: .95rem; color: var(--body);
@@ -382,7 +375,7 @@
   }
   .lead-card .role {
     font-family: var(--font-mono); font-size: .7rem; font-weight: 500;
-    letter-spacing: .14em; text-transform: uppercase; color: var(--gold);
+    letter-spacing: .14em; text-transform: uppercase; color: var(--accent);
     margin-bottom: 12px;
   }
   .lead-card h3 { font-size: 1.15rem; margin-bottom: 8px; }
@@ -417,7 +410,7 @@
   .field textarea { min-height: 128px; resize: vertical; }
   .field input:focus-visible, .field textarea:focus-visible,
   .check input:focus-visible {
-    outline: 3px solid var(--gold); outline-offset: 1px; border-color: var(--ink);
+    outline: 3px solid var(--focus); outline-offset: 1px; border-color: var(--ink);
   }
   .field [aria-invalid="true"] { border-color: #B3261E; }
   fieldset.field { border: 0; margin: 0; padding: 0; min-width: 0; }
@@ -476,7 +469,6 @@
   @media (max-width: 860px) {
     .band { padding: 64px 0; }
     .hero { padding: 76px 0 68px; }
-    .nav1-links { gap: 16px; font-size: .86rem; }
     .nav2 .wrap { min-height: 56px; }
     .nav2-right { gap: 14px; }
     /* the link row scrolls at this size — fade the right edge to show it */
@@ -490,17 +482,14 @@
     .wrap { padding: 0 20px; }
     /* keep the decorative graph from sitting behind the hero copy */
     .hero-graph { display: none; }
-    .nav1 .wrap { min-height: 48px; padding-top: 6px; padding-bottom: 6px; }
     .nav2-links { gap: 18px; }
     .hero-actions .btn { width: 100%; }
     .card, .branch-top, .branch-more, .branch-foot, .lead-card { padding-left: 22px; padding-right: 22px; }
     .branch summary { padding-left: 22px; padding-right: 22px; }
   }
-  /* Keep the emblem visible while the section links scroll on mobile. */
+  /* Keep the return link and registration button visible on mobile. */
   @media (max-width: 680px) {
     .nav2 .wrap { gap: 12px; }
-    .nav2-title span { display: none; }
-    .nav2-logo { width: 48px; height: 40px; }
     .nav2-right { flex: 1; gap: 12px; }
     .nav2-right > .btn { flex: none; padding-inline: 12px; }
   }
@@ -510,33 +499,12 @@
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<!-- =====================================================================
-     LEVEL 1 NAV — top-level nav, same as on the Munich AI Safety landing page
-     ================================================================== -->
-<div class="nav1">
-  <nav class="wrap" aria-label="Munich AI Safety">
-    <a class="brand" href="/" aria-label="Munich AI Safety, home">
-      <canvas class="brand-mark" data-mais-logo aria-hidden="true"></canvas>
-      Munich AI Safety
-    </a>
-    <div class="nav1-links">
-      <a href="/#what-we-do">What we do</a>
-      <a href="/#why-ai-safety">Why AI safety</a>
-      <a href="/student-initiative/" aria-current="true">Students</a>
-      <a href="/resources">Resources</a>
-      <a href="https://chat.whatsapp.com/BAvF88QyfrDKZMKo7whRX7?s=cl&amp;p=i&amp;ilr=4">Join us</a>
-    </div>
-  </nav>
-</div>
-
-<!-- =====================================================================
-     LEVEL 2 NAV — specific to the Student Initiative
-     ================================================================== -->
+<!-- Single student navigation; the MAIS wordmark returns to the main site. -->
 <div class="nav2">
   <nav class="wrap" aria-label="Student Initiative">
-    <a class="nav2-title" href="/student-initiative/" aria-label="Munich AI Safety Student Initiative, home">
-      <img class="nav2-logo" src="/assets/img/maissi-emblem.png" width="66" height="48" alt="">
-      <span>Student Initiative</span>
+    <a class="nav2-title" href="/" aria-label="Return to Munich AI Safety (MAIS)" title="Return to MAIS">
+      <canvas class="brand-mark" data-mais-logo aria-hidden="true"></canvas>
+      <span>MAIS</span>
     </a>
     <div class="nav2-right">
       <div class="nav2-links">
@@ -546,10 +514,8 @@
         <a href="#events">Events</a>
         <a href="#reading">Reading list</a>
         <a href="#get-involved">Get involved</a>
-        <a href="#register">Register</a>
-        <a href="#contact">Contact</a>
       </div>
-      <a class="btn btn--gold btn--sm" href="#register">Register</a>
+      <a class="btn btn--accent btn--sm" href="#register">Register</a>
     </div>
   </nav>
 </div>
@@ -576,8 +542,8 @@
         <circle cx="848" cy="268" r="7"/>
         <circle cx="1088" cy="352" r="5"/>
       </g>
-      <circle cx="1095" cy="92" r="6.5" fill="#E3A83B" opacity=".75"/>
-      <g fill="none" stroke="#E3A83B" stroke-width="1.4" opacity=".5">
+      <circle cx="1095" cy="92" r="6.5" fill="#B8E6A3" opacity=".75"/>
+      <g fill="none" stroke="#B8E6A3" stroke-width="1.4" opacity=".5">
         <circle cx="1140" cy="248" r="5"/>
       </g>
     </svg>
@@ -588,7 +554,7 @@
         <h1>Advanced AI is arriving fast. <em>The tools to govern it are not.</em></h1>
         <p class="hero-sub">We unite students, academics and experts to learn and work on the most pressing risks posed by advanced artificial intelligence.</p>
         <div class="hero-actions">
-          <a class="btn btn--gold" href="#register">
+          <a class="btn btn--accent" href="#register">
             Register for the club
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M5 12h13M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
@@ -609,7 +575,7 @@
   <section class="band" id="about">
     <div class="wrap">
       <div class="section-head">
-        <p class="eyebrow eyebrow--gold">Who we are</p>
+        <p class="eyebrow eyebrow--accent">Who we are</p>
         <h2>A student initiative working on the risks that come with advanced AI</h2>
         <p>We are students, academics and experts across Munich's universities who think the hardest problems in AI safety are worth working on now, not later. You do not need a background in AI safety to join. You need curiosity and a willingness to read.</p>
       </div>
@@ -650,7 +616,7 @@
   <section class="band band--sunk" id="branches">
     <div class="wrap">
       <div class="section-head">
-        <p class="eyebrow eyebrow--gold">What we work on</p>
+        <p class="eyebrow eyebrow--accent">What we work on</p>
         <h2>Two branches</h2>
         <p>Pick the one that fits your interests, or follow both. Each branch has its own lead, its own reading group and its own project.</p>
       </div>
@@ -660,7 +626,7 @@
         <!-- ---------- Branch: Compute Verification ---------- -->
         <article class="branch">
           <div class="branch-top">
-            <span class="branch-tag branch-tag--gold">Branch 01</span>
+            <span class="branch-tag branch-tag--accent">Branch 01</span>
             <h3>Compute Verification</h3>
             <p class="branch-lede">Industry leaders and experts are calling on governments to slow down the development of frontier AI, but the technology needed to do so doesn't exist. We are here to build it.</p>
             <p class="branch-brief">For any international agreement on AI to work, countries need to be able to check that others are keeping to it. Verification mechanisms that account for and evaluate the use of AI compute in a privacy-preserving manner can make such an agreement possible.</p>
@@ -735,12 +701,12 @@
     <div class="wrap fellowship-layout">
       <div>
         <div class="section-head">
-          <p class="eyebrow eyebrow--gold">Fellowship</p>
+          <p class="eyebrow eyebrow--accent">Fellowship</p>
           <h2 id="fellowship-heading">Participate in the AI Safety Fellowship</h2>
           <p>Apply to join the AI Safety Fellowship through our application form.</p>
         </div>
         <p class="fellowship-start"><strong>Week 1:</strong> <time datetime="2026-11-17">Tuesday, 17 November 2026</time></p>
-        <a class="btn btn--gold" href="https://forms.gle/bB5veM4RntUCavif7" target="_blank" rel="noopener noreferrer">
+        <a class="btn btn--accent" href="https://forms.gle/bB5veM4RntUCavif7" target="_blank" rel="noopener noreferrer">
           Apply on Google Forms <span aria-hidden="true">↗</span>
           <span class="visually-hidden">(opens in a new tab)</span>
         </a>
@@ -777,7 +743,7 @@
         <iframe src="https://luma.com/embed/calendar/cal-CJBJyoa9DMwgyxQ/events?lt=dark"
                 title="MAISSI events on Luma" loading="lazy" allowfullscreen></iframe>
       </div>
-      <p class="cal-link"><a class="btn btn--gold btn--sm" href="https://luma.com/maissi" target="_blank" rel="noopener">Subscribe on Luma <span class="visually-hidden">(opens in a new tab)</span></a></p>
+      <p class="cal-link"><a class="btn btn--accent btn--sm" href="https://luma.com/maissi" target="_blank" rel="noopener">Subscribe on Luma <span class="visually-hidden">(opens in a new tab)</span></a></p>
     </div>
   </section>
 
@@ -789,7 +755,7 @@
   <section class="band" id="reading">
     <div class="wrap">
       <div class="section-head">
-        <p class="eyebrow eyebrow--gold">Reading list</p>
+        <p class="eyebrow eyebrow--accent">Reading list</p>
         <h2>Start here: compute verification</h2>
         <p>The reading group works through these in order. You do not need to have read anything in advance to turn up to a session.</p>
       </div>
@@ -843,7 +809,7 @@
   <section class="band band--sunk" id="get-involved">
     <div class="wrap">
       <div class="section-head">
-        <p class="eyebrow eyebrow--gold">Get involved</p>
+        <p class="eyebrow eyebrow--accent">Get involved</p>
         <h2>Ways in</h2>
         <p>Whether you want to read along quietly or run a project, there is a way in.</p>
       </div>
@@ -877,7 +843,7 @@
     <div class="wrap">
       <div class="reg-layout">
         <div class="section-head">
-          <p class="eyebrow eyebrow--gold">Register</p>
+          <p class="eyebrow eyebrow--accent">Register</p>
           <h2>Join the Student Initiative</h2>
           <p>Tell us a bit about yourself and which activity interests you most. We will get in touch with next steps.</p>
         </div>
@@ -994,7 +960,7 @@
           <h3>Find us online</h3>
           <p>Day-to-day conversation happens on WhatsApp. We post updates and events on LinkedIn.</p>
           <div class="social-row">
-            <a class="btn btn--gold btn--sm" href="https://chat.whatsapp.com/BAvF88QyfrDKZMKo7whRX7?s=cl&amp;p=i&amp;ilr=4">WhatsApp</a>
+            <a class="btn btn--accent btn--sm" href="https://chat.whatsapp.com/BAvF88QyfrDKZMKo7whRX7?s=cl&amp;p=i&amp;ilr=4">WhatsApp</a>
             <!-- TODO: add the LinkedIn page URL once it exists -->
             <a class="btn btn--ghost-paper btn--sm" href="mailto:hello@safeaimunich.org">hello@safeaimunich.org</a>
           </div>
